@@ -1,6 +1,6 @@
 <tool id="ndsafir" name="ndsafir" version="3.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/serpico/ndsafir:766efe8b8397fef0115e20f8e7cd2853a0e0e0d5</container>
+        <container type="docker">registry.gitlab.inria.fr/serpico/ndsafir:c353cccc569b2b64e40f32334458247cea982407</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         ndsafir -i ${i} -o ${o} -v -noise ${noise} -iter ${iter} -nf {nf} -2dt ${2dt} -patch ${patch}
