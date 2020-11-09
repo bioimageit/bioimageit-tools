@@ -13,7 +13,7 @@
             <option value="2">Adaptative-Gauss</option>
         </param>
         <param argument="-patch" type="string" value="7x7x1" label="Patch" help="shoud be written a AxBxC where A, B and C are the patch radius in each dimension" />
-        <param argument="-nf" type="foat" value="1" label="Noise factor" help="Noise factor" />
+        <param argument="-nf" type="float" value="1" label="Noise factor" help="Noise factor" />
         <param argument="-2dt" type="boolean" value="false" label="Time series" help="Consider single file as time series" />
         <param argument="-iter" type="integer" value="5" label="Iterations" help="Number of iterations" />
     </inputs>
