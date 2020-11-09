@@ -1,0 +1,6 @@
+categories: [Spots detection]
+description: 2D spots detection
+homepage_url: https://team.inria.fr/serpico/software/nd-safir/
+long_description: 2D spot detections based on statistical testing
+name: atlas
+owner: serpico

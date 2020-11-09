@@ -1,0 +1,29 @@
+<tool id="atlas" name="atlas" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/atlas:c03e9822bddb53eed0609ae2e76041a112234929</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        atlas -i ${i} -o ${o} -rad ${rad} -pval ${pval} 
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
+        <param argument="-rad" type="integer" value="60" label="Gaussian std" help="Standard deviation of the Gaussian window (0 for global threshold)" />
+        <param argument="-pval" type="float" value="0.001" label="p-value" help="p-value to account for the probability of false detection" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Output image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="M10.tif" />
+            <param name="rad" value="60" />
+            <param name="pval" value="0.001" />
+            <output name="o" file="M10_o.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/atlas/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
