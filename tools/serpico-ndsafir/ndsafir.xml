@@ -3,10 +3,10 @@
         <container type="docker">registry.gitlab.inria.fr/serpico/ndsafir:c353cccc569b2b64e40f32334458247cea982407</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ndsafir -i ${i} -o ${o} -v -noise ${noise} -iter ${iter} -nf {nf} -2dt ${2dt} -patch ${patch}
+        ndsafir -i ${i} -o ${o} -noise ${noise} -iter ${iter} -nf ${nf} -2dt ${2dt} -patch ${patch}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="2D image" />
+        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
         <param argument="-noise" type="select" label="Noise">
             <option value="0">Gauss</option>
             <option value="1">Poisson-Gauss</option>
@@ -14,7 +14,7 @@
         </param>
         <param argument="-patch" type="string" value="7x7x1" label="Patch" help="shoud be written a AxBxC where A, B and C are the patch radius in each dimension" />
         <param argument="-nf" type="float" value="1" label="Noise factor" help="Noise factor" />
-        <param argument="-2dt" type="boolean" value="false" label="Time series" help="Consider single file as time series" />
+        <param argument="-2dt" type="integer" value="0" label="Time series" help="Consider single file as time series (0=false, 1=true)" />
         <param argument="-iter" type="integer" value="5" label="Iterations" help="Number of iterations" />
     </inputs>
     <outputs>
