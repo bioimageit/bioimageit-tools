@@ -1,0 +1,6 @@
+categories: [Spots detection]
+description: Hot spot detection
+homepage_url: https://team.inria.fr/serpico/software/hotspotdetection/
+long_description: Hot spot detections for microscopy images
+name: hotspot
+owner: serpico
