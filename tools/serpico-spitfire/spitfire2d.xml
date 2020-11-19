@@ -1,0 +1,56 @@
+<tool id="spitfire2d" name="SPITFIRE 2D" version="0.1.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/spitfire:330f3a9e9e904b61ac9b32aef49dfe04f0237b34</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        sdeconv2d -i ${i} -o ${o} -sigma ${sigma} -regularization ${regularization} -weighting ${weighting} -method ${method} -normalization ${normalization} -niter 200
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D image" />
+        <param argument="-sigma" type="float" value="3" label="Sigma" help="Gaussian PSF width" />
+        <param argument="-regularization" type="float" value="7" label="Regularization" help="Regularization parameter pow(2,-x)" />
+        <param argument="-weighting" type="float" min="0.0" max="1.0" value="0.6" label="Weighting" help="Regularization parameter pow(2,-x)" optional="true" />
+        <param argument="-method" value="HSV" type="select" label="Method" optional="true" >
+            <option value="SV">Sparse variation</option>
+            <option value="HSV">Hessian variation</option>
+        </param>
+        <param argument="-normalization" value="L2" type="select" label="Normalization" optional="true" >
+            <option value="L2">L2</option>
+            <option value="max">max</option>
+            <option value="sum">sum</option>
+            <option value="8bits">8bits</option>
+            <option value="12bits">12bits</option>
+            <option value="16bits">16bits</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="celegans.tif" />
+            <param name="sigma" value="3" />
+            <param name="regularization" value="11" />
+            <param name="weighting" value="0.6" />
+            <param name="method" value="HV" />
+            <output name="o" file="sv_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@unpublished{nguyen:hal-01609810,
+            TITLE = {{Generalized Sparse Variation Regularization for Large Fluorescence Image Deconvolution}},
+            AUTHOR = {Nguyen, Hoa{\"i}-Nam and Paveau, Vincent and Cauchois, Cyril and Kervrann, Charles},
+            URL = {https://hal.inria.fr/hal-01609810},
+            NOTE = {working paper or preprint},
+            YEAR = {2017},
+            MONTH = Oct,
+            KEYWORDS = {Fluorescence imaging ; image deconvolution ; sparse variation ; convex optimization ; proximal algorithms},
+            PDF = {https://hal.inria.fr/hal-01609810/file/HAL-SVDeconv.pdf},
+            HAL_ID = {hal-01609810},
+            HAL_VERSION = {v1},
+        }</citation>
+    </citations>
+</tool>
