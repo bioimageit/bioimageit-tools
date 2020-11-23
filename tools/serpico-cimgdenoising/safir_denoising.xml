@@ -1,0 +1,37 @@
+<tool id="CImgDenoisingSAFIR" name="Denoising SAFIR" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -patch '${patch}' -iter '${iter}' -algo SAFIR
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-patch" type="integer" min="0.0" value="3" label="Half size of the patch" />
+        <param argument="-iter" type="integer" min="0.0" value="4" label="Number of iterations" help="" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="patch" value="3" />
+            <param name="iter" value="4" />
+            <output name="o" file="safir_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@article{Boulanger09b,
+			Author = {Boulanger, J. and Kervrann, Ch. and Bouthemy, P. and Elbau, P. and Sibarita, J.-B. and Salamero, J.},
+			Title = {Patch-based non-local functional for denoising fluorescence microscopy image sequences},
+			Journal = {IEEE Trans. on Medical Imaging},
+			Volume = {29},
+			Number = {2},
+			Year = {2010}
+        }</citation>
+    </citations>
+</tool>

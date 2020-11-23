@@ -1,0 +1,37 @@
+<tool id="CImgDenoisingNLBayes" name="Denoising NLBayes" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -msg '${-msg}' -algo NLBayes
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-msg" type="float" min="0.0" value="20.0" label="Gaussian noise standard deviation" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="msg" value="20.0" />
+            <output name="o" file="nlbayes_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@article{ipol.2013.16,
+			title   = {{Implementation of the "Non-Local Bayes" (NL-Bayes) Image Denoising Algorithm}},
+			author  = {Lebrun, Marc and Buades, Antoni and Morel, Jean-Michel},
+			journal = {{Image Processing On Line}},
+			volume  = {3},
+			pages   = {1--42},
+			year    = {2013},
+			doi     = {10.5201/ipol.2013.16},
+        }</citation>
+    </citations>
+</tool>
+

@@ -1,0 +1,41 @@
+<tool id="cimgdenoising" name="CImg Denoising" version="0.1.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -sparsep '${sparsep}' -denoisep '${denoisep}' -algo SV
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-sparsep" type="float" min="0.0" max="1.0" value="0.6" label="Sparsity parameter" />
+        <param argument="-denoisep" type="float" min="0.0" value="6.0" label="Regularization" help="The regularization value is 2^(-value)" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="sparsep" value="0.1" />
+            <param name="denoisep" value="11" />
+            <output name="o" file="sv_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@unpublished{nguyen:hal-01609810,
+            TITLE = {{Generalized Sparse Variation Regularization for Large Fluorescence Image Deconvolution}},
+            AUTHOR = {Nguyen, Hoa{\"i}-Nam and Paveau, Vincent and Cauchois, Cyril and Kervrann, Charles},
+            URL = {https://hal.inria.fr/hal-01609810},
+            NOTE = {working paper or preprint},
+            YEAR = {2017},
+            MONTH = Oct,
+            KEYWORDS = {Fluorescence imaging ; image deconvolution ; sparse variation ; convex optimization ; proximal algorithms},
+            PDF = {https://hal.inria.fr/hal-01609810/file/HAL-SVDeconv.pdf},
+            HAL_ID = {hal-01609810},
+            HAL_VERSION = {v1},
+        }</citation>
+    </citations>
+</tool>

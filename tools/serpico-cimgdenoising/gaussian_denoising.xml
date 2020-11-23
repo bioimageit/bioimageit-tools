@@ -1,0 +1,27 @@
+<tool id="CImgDenoisingGaussian" name="Denoising Gaussian" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -denoisep '${denoisep}' -algo Gaussian
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-denoisep" type="float" min="0.0" value="1.0" label="Standard deviation" help="" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="denoisep" value="1.0" />
+            <output name="o" file="gaussian_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

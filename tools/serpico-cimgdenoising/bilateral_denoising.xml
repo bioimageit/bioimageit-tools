@@ -1,0 +1,36 @@
+<tool id="CImgDenoisingBilateral" name="Denoising Bilateral" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="singularity">$__tool_directory__/../../../singularity/biserpico</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -neigh '${neigh}' -denoisep '${denoisep}' -algo Bilateral
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-neigh" type="integer" min="0" value="7" label="Half size of the neighborhood" />
+        <param argument="-denoisep" type="float" min="0.0" value="2.0" label="Denoising parameter" help="" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="neigh" value="7" />
+            <param name="denoisep" value="2" />
+            <output name="o" file="bilateral_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@inproceedings{ tomasi98bilateral,
+            author = "Carlo Tomasi and Roberto Manduchi",
+            title = "Bilateral Filtering for Gray and Color Images",
+            booktitle = "{ICCV}",
+            pages = "839-846",
+            year = "1998",
+            url = "citeseer.ist.psu.edu/tomasi98bilateral.html" }</citation>
+    </citations>
+</tool>

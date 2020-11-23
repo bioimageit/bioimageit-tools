@@ -1,0 +1,7 @@
+categories: 
+  - Denoising
+description: CImg denoising is a set of tools to denoise 2D images
+homepage_url: https://team.inria.fr/serpico/software/
+long_description: Denoising 2D images with patch based methods and basic methods and variational methods
+name: CImg denoising
+owner: serpico

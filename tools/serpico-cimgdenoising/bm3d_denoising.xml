@@ -1,0 +1,40 @@
+<tool id="CImgDenoisingBM3D" name="Denoising BM3D" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -msg '${msg}' -algo BM3D
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-msg" type="float" min="0.0" value="20.0" label="Gaussian noise standard deviation" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="msg" value="20.0" />
+            <output name="o" file="bm3d_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@ARTICLE{4271520,
+			author={K. {Dabov} and A. {Foi} and V. {Katkovnik} and K. {Egiazarian}},
+			journal={IEEE Transactions on Image Processing},
+			title={Image Denoising by Sparse 3-D Transform-Domain Collaborative Filtering},
+			year={2007},
+			volume={16},
+			number={8},
+			pages={2080-2095},
+			keywords={image colour analysis;image denoising;image enhancement;image representation;Wiener filters;image denoising;3D transform-domain collaborative filter;sparse representation;image fragment;image enhancement;Wiener filter;Image denoising;Collaboration;Filtering;Noise reduction;Signal processing algorithms;Signal processing;Energy resolution;Spatial resolution;Signal resolution;Discrete cosine transforms;Adaptive grouping;block matching;image denoising;sparsity;3-D transform shrinkage;Algorithms;Artifacts;Image Enhancement;Image Interpretation, Computer-Assisted;Imaging, Three-Dimensional;Reproducibility of Results;Sensitivity and Specificity},
+			doi={10.1109/TIP.2007.901238},
+			ISSN={1941-0042},
+			month={Aug}
+        }</citation>
+    </citations>
+</tool>

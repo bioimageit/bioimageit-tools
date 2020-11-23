@@ -1,0 +1,37 @@
+<tool id="CImgDenoisingBayesNLmeans" name="Denoising BayesNLmeans" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -msg '${msg}' -algo BayesNLmeans
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-msg" type="float" min="0.0" value="20.0" label="Gaussian noise standard deviation" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="msg" value="20.0" />
+            <param name="denoisep" value="11" />
+            <output name="o" file="bayesnlmeans_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@InProceedings{Kervrann07a,
+            Author = {Kervrann, Ch. and Boulanger, J. and Coupé, P.},
+            Title = {Bayesian non-local means filter, image redundancy and adaptive dictionaries for noise removal},
+            BookTitle = {Proc. Conf. Scale-Space and Variational Meth. (SSVM' 07)},
+            Pages = {520--532},
+            Address = {Ischia, Italy},
+            Month = {June},
+            Year = {2007}
+        }</citation>
+    </citations>
+</tool>

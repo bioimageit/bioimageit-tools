@@ -1,0 +1,47 @@
+<tool id="CImgDenoisingNLMeans" name="Denoising NLMeans" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -patch '${-patch}' -neigh '${-neigh}' -denoisep '${-denoisep}' -algo NLMeans
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-patch" type="integer" min="0" value="3" label="Half size of the patch" />
+		<param argument="-neigh" type="integer" min="0" value="7" label="Half size of the neighborhood" />
+        <param argument="-denoisep" type="float" min="0.0" value="3.5" label="Denoising parameter" help="" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="patch" value="3" />
+			<param name="neigh" value="7" />
+            <param name="denoisep" value="3.5" />
+            <output name="o" file="nlmeans_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@article{buades2005review,
+			added-at = {2014-09-12T15:37:09.000+0200},
+			author = {Buades, Antoni and Coll, Bartomeu and Morel, Jean-Michel},
+			biburl = {https://www.bibsonomy.org/bibtex/2cde6afc4e200e034bdca400106a2dbb7/alex_ruff},
+			interhash = {5fd832ec356e907a9dec10373107926b},
+			intrahash = {cde6afc4e200e034bdca400106a2dbb7},
+			journal = {Multiscale Modeling \& Simulation},
+			keywords = {filtering image_processing noise},
+			number = 2,
+			pages = {490--530},
+			publisher = {SIAM},
+			timestamp = {2014-09-12T15:37:09.000+0200},
+			title = {A review of image denoising algorithms, with a new one},
+			volume = 4,
+			year = 2005
+		}</citation>
+    </citations>
+</tool>

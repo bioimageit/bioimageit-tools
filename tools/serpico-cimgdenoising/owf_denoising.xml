@@ -1,0 +1,42 @@
+<tool id="CImgDenoisingOWF" name="Denoising OWF" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        denoise -i '${i}' -o '${o}' -patch '${patch}' -neigh '${neigh}' -algo OWF
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param argument="-patch" type="integer" min="0" value="3" label="Half size of the patch" />
+        <param argument="-neigh" type="integer" min="0" value="7" label="Half size of the neighborhood" help="" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="Montage.tif" />
+            <param name="patch" value="3" />
+            <param name="neigh" value="7" />
+            <output name="o" file="owf_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@article{jin:hal-01575918,
+			TITLE = {{Non-local means and optimal weights for noise removal}},
+			AUTHOR = {Jin, Qiyu and Grama, Ion and Kervrann, Charles and Liu, Quansheng},
+			URL = {https://hal.inria.fr/hal-01575918},
+			JOURNAL = {{SIAM Journal on Imaging Sciences}},
+			PUBLISHER = {{Society for Industrial and Applied Mathematics}},
+			YEAR = {2017},
+			MONTH = Dec,
+			KEYWORDS = {image denoising ; image patches ; nonparametric estimation ; pointwise L2 risk ; optimization},
+			PDF = {https://hal.inria.fr/hal-01575918/file/HAL-OWF.pdf},
+			HAL_ID = {hal-01575918},
+			HAL_VERSION = {v1},
+			}</citation>
+    </citations>
+</tool>
