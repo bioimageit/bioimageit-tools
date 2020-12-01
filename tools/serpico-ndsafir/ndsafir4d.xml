@@ -3,7 +3,7 @@
         <container type="docker">registry.gitlab.inria.fr/serpico/ndsafir:966d6af3be84274c6998813d91032d113060021d</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python ndsafir_series.py -i ${i} -o ${o} -n ${n} -t ${t} -f ${f} -p ${p} -b ${b}
+        python3 ndsafir_series.py -i ${i} -o ${o} -n ${n} -t ${t} -f ${f} -p ${p} -b ${b}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="tiff" label="Input Image" help="image" />
