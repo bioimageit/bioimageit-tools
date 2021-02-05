@@ -1,3 +1,3 @@
 # Tools wrappers
 
-Official repository of the image processing wrappers for bioimaging
+Repository of the image processing wrappers for bioimaging
