@@ -1,0 +1,36 @@
+<tool id="ndsafir4d" name="ndsafir 4D" version="3.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/serpico/ndsafir:b8c1b50553461f26e14cd33ced4cb35c5ae435cb</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python3 ndsafir_series.py -i ${i} -o ${o} -n ${n} -t ${t} -f ${f} -p ${p} -b ${b}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
+        <param argument="-n" type="select" label="Noise">
+            <option value="0">Gauss</option>
+            <option value="1">Poisson-Gauss</option>
+            <option value="2">Adaptative-Gauss</option>
+        </param>
+        <param argument="-p" type="string" value="7x7x1" label="Patch" help="shoud be written a AxBxC where A, B and C are the patch radius in each dimension" />
+        <param argument="-f" type="float" value="1" label="Noise factor" help="Noise factor (only for Adaptative-Gauss noise)" />
+        <param argument="-t" type="integer" value="5" label="Iterations" help="Number of iterations" />
+        <param argument="-b" type="integer" value="10" label="Time batch" help="Number time frames in one run" />
+    </inputs>
+    <outputs>
+        <data name="o" format="tiff" label="Output image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="03_rab_bruite.tif" />
+            <param name="n" value="2" />
+            <param name="f" value="2" />
+            <output name="o" file="DN.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/nd-safir/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
