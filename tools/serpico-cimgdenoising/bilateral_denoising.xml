@@ -1,6 +1,6 @@
 <tool id="CImgDenoisingBilateral" name="Denoising Bilateral" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="singularity">$__tool_directory__/../../../singularity/biserpico</container>
+        <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         denoise -i '${i}' -o '${o}' -neigh '${neigh}' -denoisep '${denoisep}' -algo Bilateral
