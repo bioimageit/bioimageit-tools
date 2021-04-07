@@ -1,9 +1,9 @@
 <tool id="matirfsequence" name="MATIRF sequence" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/serpico/matirf:e603e363fff05a662bc317253ea2ce3969ad8f6a</container>
+        <container type="docker">registry.gitlab.inria.fr/serpico/matirf:0ea86a4f15adb71762dfba6fbed082b37a3ca57f</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python matirf_sequence.py -i ${i} -o ${o} -p ${p} -d ${d} -n ${n} -l ${l} -g ${g} -t ${t} -r ${r} -z ${z}
+        python3 matirf_sequence.py -i ${i} -o ${o} -p ${p} -d ${d} -n ${n} -l ${l} -g ${g} -t ${t} -r ${r} -z ${z}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="tiff" label="Input Image (txt format)" />
