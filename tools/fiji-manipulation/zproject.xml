@@ -1,0 +1,34 @@
+<tool id="zproject" name="fiji zproject" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro zproject.ijm '[${input},${projection},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input" format="tiff" label="Input image" />
+        <param argument="-projection" type="select" value="Max Intensity" label="Projection" >
+			<option value="Max_Intensity">Max Intensity</option>
+			<option value="Average_Intensity">Average Intensity</option>
+			<option value="Min_Intensity">Min Intensity</option>
+			<option value="Sum_Slices">Sum Slices</option>
+			<option value="Standard_Deviation">Standard Deviation</option>
+			<option value="Median">Median</option>
+		</param>
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Ouput image"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="celegans_stack.tif" />
+            <param name="projection" value="Max_Intensity" />
+            <output name="output" file="zproject.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

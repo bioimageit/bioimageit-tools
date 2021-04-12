@@ -1,0 +1,35 @@
+<tool id="frangi-vesselness" name="fiji Frangi Vesselness" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro frangi_vesselness.ijm '[${input},${dogauss},${spacing1},${spacing2},${scale1},${scale2},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input" format="tiff" label="Input image" />
+        <param argument="-dogauss" type="bool" value="false" label="Apply Gaussian at each scale" />
+        <param argument="-spacing1" type="integer" value="1" label="Spacing 1" />
+        <param argument="-spacing2" type="integer" value="1" label="Spacing 2" />
+        <param argument="-scale1" type="integer" value="2" label="Scale 1" />
+        <param argument="-scale2" type="integer" value="5" label="Scale 2" />
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Ouput image"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="celegans2d.tif" />
+            <param name="dogauss" value="true" />
+            <param name="spacing1" value="1" />
+            <param name="spacing2" value="1" />
+            <param name="scale1" value="2" />
+            <param name="scale2" value="5" />
+            <output name="output" file="frangi_vesselness.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

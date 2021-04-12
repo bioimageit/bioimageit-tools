@@ -1,0 +1,41 @@
+<tool id="image-calculator" name="fiji image calculator" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro image_calculator.ijm '[${input1},${input2},${operator},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input1" format="tiff" label="First image" />
+        <param type="data" name="input2" format="tiff" label="Second image" />
+        <param argument="-operator" type="select" value="Default dark" label="Operator" >
+			<option value="Add">Add</option>
+			<option value="Subtract">Subtract</option>
+			<option value="Multiply">Multiply</option>
+			<option value="Divide">Divide</option>
+			<option value="And">And</option>
+			<option value="OR">OR</option>
+			<option value="XOR">XOR</option>
+			<option value="Min">Min</option>
+			<option value="Max">Max</option>
+			<option value="Average">Average</option>
+			<option value="Difference">Difference</option>
+		</param>
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Ouput image"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input1" value="celegans2d.tif" />
+            <param name="input2" value="invert.tif" />
+            <param name="operator" value="Add" />
+            <output name="output" file="image_calculator.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

@@ -1,0 +1,31 @@
+<tool id="mean-filter-3d" name="fiji mean filter 3d" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro mean_filter_3d.ijm '[${input},${radiusx},${radiusy},${radiusz},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input" format="tiff" label="Input image" />
+        <param argument="-radiusx" type="float" value="2" label="X radius" />
+        <param argument="-radiusy" type="float" value="2" label="Y radius" />
+        <param argument="-radiusz" type="float" value="2" label="Z radius" />
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Ouput image"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="celegans_stack.tif" />
+            <param name="radiusx" value="2" />
+            <param name="radiusy" value="2" />
+            <param name="radiusz" value="2" />
+            <output name="output" file="mean_filter_3d.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

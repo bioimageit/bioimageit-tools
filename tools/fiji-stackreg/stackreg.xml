@@ -1,0 +1,32 @@
+<tool id="fiji-stackreg" name="fiji stack reg" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro stackreg.ijm '[${input},${transformation},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input" format="tiff" label="Input image stack" />
+		<param argument="-transformation" type="select" value="Rigid_Body" label="Geometrical transformation" >
+			<option value="Translation">Translation</option>
+			<option value="Rigid_Body">Rigid Body</option>
+			<option value="Scaled_Rotation">Scaled Rotation</option>
+			<option value="Affine">Affine</option>
+		</param>
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Registered image stack"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="celegans_stack.tif" />
+            <param name="transformation" value="Rigid_Body" />
+            <output name="output" file="stackreg.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

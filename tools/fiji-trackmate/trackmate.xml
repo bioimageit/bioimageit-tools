@@ -1,0 +1,26 @@
+<tool id="trackmate" name="trackmate" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --ij2 --headless --console --run trackmate.py 'input_file="${input_file}",radius="${radius}",threshold="${threshold}",median="${median}",filter_spot_quality="${quality}",filter_track_displacement="${displacement}",output_file="${output_file}"'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input_file" format="tiff" label="Input Image" help="image" />
+        <param argument="-radius" type="float" value="2.5" label="Spot radius" help="Spot radius" />
+        <param argument="-threshold" type="float" value="0.0" label="Threshold" help="Spot detection threshold" />
+        <param argument="-median" type="bool" value="false" label="Median" help="Median filtering image for spot detection" />
+        <param argument="-quality" type="float" value="30" label="Quality" help="Quality criterion for spot filtering" />
+        <param argument="-displacement" type="float" value="10" label="Displacement" help="Tracks max displacement filtering" />
+    </inputs>
+    <outputs>
+        <data name="o" format="xml" label="Output file" />
+    </outputs>
+    <tests>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/atlas/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

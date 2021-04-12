@@ -1,0 +1,7 @@
+categories: 
+  - Segmentation
+description: 2D or 3D image segmentation  
+homepage_url: https://gitlab.inria.fr/bioimage-it/fiji-tools/
+long_description: 2D or 3D image segmentation
+name: Fiji
+owner: sprigent

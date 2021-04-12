@@ -1,0 +1,44 @@
+<tool id="fiji-threshold" name="fiji threshold" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro threshold.ijm '[${input},${threshold},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input" format="tiff" label="Input image" />
+		<param argument="-threshold" type="select" value="Default dark" label="Threshold method" >
+			<option value="Default">Default</option>
+			<option value="Huang">Huang</option>
+			<option value="Huang2">Huang2</option>
+			<option value="Intermodes">Intermodes</option>
+			<option value="Li">Li</option>
+			<option value="MaxEntropy">MaxEntropy</option>
+			<option value="Mean">Mean</option>
+			<option value="MinError(I)">MinError(I)</option>
+			<option value="Minimum">Minimum</option>
+			<option value="Moments">Moments</option>
+			<option value="Otsu">Otsu</option>
+			<option value="Percentile">Percentile</option>
+			<option value="RenyiEntropy">RenyiEntropy</option>
+			<option value="Shanbhag">Shanbhag</option>
+			<option value="Triangle">Triangle</option>
+			<option value="Yen">Yen</option>
+		</param>
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Binary output image"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="celegans2d.tif" />
+            <param name="threshold" value="Default" />
+            <output name="output" file="threshold.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

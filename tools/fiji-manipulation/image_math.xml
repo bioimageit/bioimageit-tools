@@ -1,0 +1,39 @@
+<tool id="image-math" name="fiji image math" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ImageJ-linux64 --headless --console -macro image_math.ijm '[${input},${operator},${value},${output}]'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input" format="tiff" label="Input image" />
+        <param argument="-operator" type="select" value="Add" label="Operator" >
+			<option value="Add">Add</option>
+			<option value="Subtract">Subtract</option>
+			<option value="Multiply">Multiply</option>
+			<option value="Divide">Divide</option>
+			<option value="And">And</option>
+			<option value="OR">OR</option>
+			<option value="XOR">XOR</option>
+			<option value="Min">Min</option>
+			<option value="Max">Max</option>
+		</param>
+        <param argument="-value" type="string" value="25" label="Value" />
+    </inputs>
+    <outputs>
+        <data format="tiff" name="output" label="Ouput image"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="celegans2d.tif" />
+            <param name="operator" value="Add" />
+            <param name="value" value="25" />
+            <output name="output" file="add.tif" compare="sim_content" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://bioimage-it.gitlabpages.inria.fr/fiji-tools/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
