@@ -6,7 +6,7 @@
         ImageJ-linux64 --headless --console -macro zproject.ijm '[${input},${projection},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image" />
+        <param type="data" name="input" format="imagetiff" label="Input image" />
         <param argument="-projection" type="select" value="Max Intensity" label="Projection" >
 			<option value="Max_Intensity">Max Intensity</option>
 			<option value="Average_Intensity">Average Intensity</option>
@@ -17,7 +17,7 @@
 		</param>
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Ouput image"/>
+        <data format="imagetiff" name="output" label="Ouput image"/>
     </outputs>
     <tests>
         <test>

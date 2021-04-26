@@ -6,12 +6,12 @@
         ImageJ-linux64 --headless --console -macro gaussian_blur_2d.ijm '[${input},${sigma},${scaled},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image" />
+        <param type="data" name="input" format="imagetiff" label="Input image" />
         <param argument="-sigma" type="float" value="1" label="Sigma" />
         <param argument="-scaled" type="boolean" value="false" label="Scale to resolution unit" />
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Ouput image"/>
+        <data format="imagetiff" name="output" label="Ouput image"/>
     </outputs>
     <tests>
         <test>

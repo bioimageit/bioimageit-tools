@@ -6,7 +6,7 @@
         python3 matirf_sequence.py -i ${i} -o ${o} -p ${p} -d ${d} -n ${n} -l ${l} -g ${g} -t ${t} -r ${r} -z ${z}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image (txt format)" />
+        <param type="data" name="i" format="movietxt" label="Input Image (txt format)" />
 		<param type="data" name="p" format="json" label="microscope parameters (json format)"/>
 		<param argument="-d" type="float" value="500" label="Depth" />
 		<param argument="-n" type="integer" value="20" label="Number of planes" />
@@ -17,7 +17,7 @@
 		<param argument="-z" type="integer" value="0" label="Z0" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="movietxt" label="Denoised image" />
     </outputs>
     <tests>
         <test>

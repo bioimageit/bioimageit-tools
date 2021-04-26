@@ -6,7 +6,7 @@
         ImageJ-linux64 --headless --console -macro frangi_vesselness.ijm '[${input},${dogauss},${spacing1},${spacing2},${scale1},${scale2},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image" />
+        <param type="data" name="input" format="imagetiff" label="Input image" />
         <param argument="-dogauss" type="bool" value="false" label="Apply Gaussian at each scale" />
         <param argument="-spacing1" type="integer" value="1" label="Spacing 1" />
         <param argument="-spacing2" type="integer" value="1" label="Spacing 2" />
@@ -14,7 +14,7 @@
         <param argument="-scale2" type="integer" value="5" label="Scale 2" />
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Ouput image"/>
+        <data format="imagetiff" name="output" label="Ouput image"/>
     </outputs>
     <tests>
         <test>

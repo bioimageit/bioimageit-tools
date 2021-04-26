@@ -6,13 +6,13 @@
         denoise -i '${i}' -o '${-o}' -patch '${-patch}' -neigh '${-neigh}' -denoisep '${-denoisep}' -algo DCT
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="2D or 3D image" />
         <param argument="-patch" type="integer" min="0" value="3" label="Half size of the patch" />
 		<param argument="-neigh" type="integer" min="0" value="7" label="Half size of the neighborhood" />
         <param argument="-denoisep" type="float" min="0.0" value="3.0" label="Regularization" help="" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="imagetiff" label="Denoised image" />
     </outputs>
     <tests>
         <test>

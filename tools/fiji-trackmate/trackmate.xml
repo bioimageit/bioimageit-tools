@@ -6,7 +6,7 @@
         ImageJ-linux64 --ij2 --headless --console --run trackmate.py 'input_file="${input_file}",radius="${radius}",threshold="${threshold}",median="${median}",filter_spot_quality="${quality}",filter_track_displacement="${displacement}",output_file="${output_file}"'
     ]]></command>
     <inputs>
-        <param type="data" name="input_file" format="tiff" label="Input Image" help="image" />
+        <param type="data" name="input_file" format="imagetiff" label="Input Image" help="image" />
         <param argument="-radius" type="float" value="2.5" label="Spot radius" help="Spot radius" />
         <param argument="-threshold" type="float" value="0.0" label="Threshold" help="Spot detection threshold" />
         <param argument="-median" type="bool" value="false" label="Median" help="Median filtering image for spot detection" />
@@ -14,7 +14,7 @@
         <param argument="-displacement" type="float" value="10" label="Displacement" help="Tracks max displacement filtering" />
     </inputs>
     <outputs>
-        <data name="o" format="xml" label="Output file" />
+        <data name="o" format="trackmatemodel" label="Output file" />
     </outputs>
     <tests>
     </tests>

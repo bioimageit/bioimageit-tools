@@ -6,13 +6,13 @@
         hotSpotDetection -i ${i} -o ${o} -m ${m} -n ${n} -pv ${pv}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="-m" type="integer" value="3" label="patch size" help="patch size (radius)" />
         <param argument="-n" type="integer" value="5" label="neighborhood size" help="neighborhood size (radius)" />
         <param argument="-pv" type="float" value="0.2" label="p-value" help="p-value for false alarm" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Output image" />
+        <data name="o" format="imagetiff" label="Output image" />
     </outputs>
     <tests>
         <test>

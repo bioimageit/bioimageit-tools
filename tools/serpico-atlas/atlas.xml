@@ -6,12 +6,12 @@
         atlas -i ${i} -o ${o} -rad ${rad} -pval ${pval} 
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="-rad" type="integer" value="60" label="Gaussian std" help="Standard deviation of the Gaussian window (0 for global threshold)" />
         <param argument="-pval" type="float" value="0.001" label="p-value" help="p-value to account for the probability of false detection" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Output image" />
+        <data name="o" format="imagetiff" label="Output image" />
     </outputs>
     <tests>
         <test>

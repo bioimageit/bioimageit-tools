@@ -6,12 +6,12 @@
         conda activate decon_env && cudadecon -i ${i} -o ${o} -p ${p} -b ${b} 
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
-        <param type="data" name="p" format="tiff" label="PSF Image" help="image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="data" name="p" format="imagetiff" label="PSF Image" help="image" />
         <param argument="-b" type="float" value="80" label="Background" help="Intensity of the background" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Output image" />
+        <data name="o" format="imagetiff" label="Output image" />
     </outputs>
     <help><![CDATA[
         https://github.com/tlambert03/pycudadecon

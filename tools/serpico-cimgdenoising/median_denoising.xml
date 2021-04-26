@@ -6,11 +6,11 @@
         denoise -i '${i}' -o '${o}' -neigh '${-neigh}' -algo Median
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="2D or 3D image" />
         <param argument="-neigh" type="float" min="0" value="7" label="Half size of the neighborhood" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="imagetiff" label="Denoised image" />
     </outputs>
     <tests>
         <test>

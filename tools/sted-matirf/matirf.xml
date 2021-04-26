@@ -6,7 +6,7 @@
         matirf -i ${i} -p ${p} -o ${o} -d ${d} -n ${n} -lambda ${lambda} -gamma ${gamma} -iter ${iter} -reg ${reg} -zmin ${zmin} 
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" />
 		<param type="data" name="p" format="json" label="microscope parameters (json format)"/>
 		<param argument="-d" type="float" value="500" label="Depth" />
 		<param argument="-n" type="integer" value="20" label="Number of planes" />
@@ -17,7 +17,7 @@
 		<param argument="-zmin" type="integer" value="0" label="Z0" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="imagetiff" label="Denoised image" />
     </outputs>
     <tests>
         <test>

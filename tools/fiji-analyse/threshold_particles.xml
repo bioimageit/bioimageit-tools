@@ -6,7 +6,7 @@
         ImageJ-linux64 --headless --console -macro threshold_particles.ijm '[${input},${threshold},${draw},${count},${measures}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image" />
+        <param type="data" name="input" format="imagetiff" label="Input image" />
 		<param argument="-threshold" type="select" value="Default dark" label="Threshold method" >
 			<option value="Default">Default</option>
 			<option value="Huang">Huang</option>
@@ -27,9 +27,9 @@
 		</param>
     </inputs>
     <outputs>
-        <data format="tiff" name="draw" label="Particles drawing"/>
-        <data format="csv" name="count" label="Number of particles"/>
-        <data format="csv" name="measures" label="Particles measures"/>
+        <data format="imagetiff" name="draw" label="Particles drawing"/>
+        <data format="numbercsv" name="count" label="Number of particles"/>
+        <data format="tablecsv" name="measures" label="Particles measures"/>
     </outputs>
     <tests>
         <test>

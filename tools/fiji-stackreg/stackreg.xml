@@ -6,7 +6,7 @@
         ImageJ-linux64 --headless --console -macro stackreg.ijm '[${input},${transformation},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image stack" />
+        <param type="data" name="input" format="imagetiff" label="Input image stack" />
 		<param argument="-transformation" type="select" value="Rigid_Body" label="Geometrical transformation" >
 			<option value="Translation">Translation</option>
 			<option value="Rigid_Body">Rigid Body</option>
@@ -15,7 +15,7 @@
 		</param>
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Registered image stack"/>
+        <data format="imagetiff" name="output" label="Registered image stack"/>
     </outputs>
     <tests>
         <test>

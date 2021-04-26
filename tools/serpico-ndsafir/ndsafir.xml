@@ -6,7 +6,7 @@
         ndsafir -i ${i} -o ${o} -noise ${noise} -iter ${iter} -nf ${nf} -2dt ${2dt} -patch ${patch}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="-noise" type="select" label="Noise">
             <option value="0">Gauss</option>
             <option value="1">Poisson-Gauss</option>
@@ -18,7 +18,7 @@
         <param argument="-iter" type="integer" value="5" label="Iterations" help="Number of iterations" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Output image" />
+        <data name="o" format="imagetiff" label="Output image" />
     </outputs>
     <tests>
         <test>

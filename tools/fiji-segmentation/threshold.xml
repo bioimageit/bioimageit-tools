@@ -6,7 +6,7 @@
         ImageJ-linux64 --headless --console -macro threshold.ijm '[${input},${threshold},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image" />
+        <param type="data" name="input" format="imagetiff" label="Input image" />
 		<param argument="-threshold" type="select" value="Default dark" label="Threshold method" >
 			<option value="Default">Default</option>
 			<option value="Huang">Huang</option>
@@ -27,7 +27,7 @@
 		</param>
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Binary output image"/>
+        <data format="imagetiff" name="output" label="Binary output image"/>
     </outputs>
     <tests>
         <test>

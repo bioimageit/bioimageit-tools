@@ -6,8 +6,8 @@
         ImageJ-linux64 --headless --console -macro image_calculator.ijm '[${input1},${input2},${operator},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input1" format="tiff" label="First image" />
-        <param type="data" name="input2" format="tiff" label="Second image" />
+        <param type="data" name="input1" format="imagetiff" label="First image" />
+        <param type="data" name="input2" format="imagetiff" label="Second image" />
         <param argument="-operator" type="select" value="Default dark" label="Operator" >
 			<option value="Add">Add</option>
 			<option value="Subtract">Subtract</option>
@@ -23,7 +23,7 @@
 		</param>
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Ouput image"/>
+        <data format="imagetiff" name="output" label="Ouput image"/>
     </outputs>
     <tests>
         <test>

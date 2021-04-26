@@ -6,7 +6,7 @@
         conda activate decon_env && cudadecon -i ${i} -o ${o} -x ${x} -z ${z} -a {a} -w {w} -s {s} -p {p}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="-x" type="float" value="0.1" label="dxdata" help="dxdata" />
         <param argument="-y" type="float" value="0.5" label="dzdata" help="dzdata" />
         <param argument="-a" type="float" value="31.5" label="angle" help="angle" />
@@ -15,7 +15,7 @@
         <param argument="-p" type="string" value="auto" label="pad value" help="pad value" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Output image" />
+        <data name="o" format="imagetiff" label="Output image" />
     </outputs>
     <help><![CDATA[
         https://github.com/tlambert03/pycudadecon

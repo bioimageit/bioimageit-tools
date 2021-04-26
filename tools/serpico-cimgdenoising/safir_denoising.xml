@@ -6,12 +6,12 @@
         denoise -i '${i}' -o '${o}' -patch '${patch}' -iter '${iter}' -algo SAFIR
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="2D or 3D image" />
         <param argument="-patch" type="integer" min="0.0" value="3" label="Half size of the patch" />
         <param argument="-iter" type="integer" min="0.0" value="4" label="Number of iterations" help="" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="imagetiff" label="Denoised image" />
     </outputs>
     <tests>
         <test>

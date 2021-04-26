@@ -6,11 +6,11 @@
         denoise -i '${i}' -o '${o}' -msg '${msg}' -algo BM3D
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="2D or 3D image" />
         <param argument="-msg" type="float" min="0.0" value="20.0" label="Gaussian noise standard deviation" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="imagetiff" label="Denoised image" />
     </outputs>
     <tests>
         <test>

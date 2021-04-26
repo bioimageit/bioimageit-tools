@@ -6,13 +6,13 @@
         ImageJ-linux64 --headless --console -macro maximum_filter_3d.ijm '[${input},${radiusx},${radiusy},${radiusz},${output}]'
     ]]></command>
     <inputs>
-        <param type="data" name="input" format="tiff" label="Input image" />
+        <param type="data" name="input" format="imagetiff" label="Input image" />
         <param argument="-radiusx" type="float" value="2" label="X radius" />
         <param argument="-radiusy" type="float" value="2" label="Y radius" />
         <param argument="-radiusz" type="float" value="2" label="Z radius" />
     </inputs>
     <outputs>
-        <data format="tiff" name="output" label="Ouput image"/>
+        <data format="imagetiff" name="output" label="Ouput image"/>
     </outputs>
     <tests>
         <test>

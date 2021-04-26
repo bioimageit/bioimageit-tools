@@ -6,12 +6,12 @@
         denoise -i '${i}' -o '${o}' -sparsep '${sparsep}' -denoisep '${denoisep}' -algo SV
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="tiff" label="Input Image" help="2D or 3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="2D or 3D image" />
         <param argument="-sparsep" type="float" min="0.0" max="1.0" value="0.6" label="Sparsity parameter" />
         <param argument="-denoisep" type="float" min="0.0" value="6.0" label="Regularization" help="The regularization value is 2^(-value)" />
     </inputs>
     <outputs>
-        <data name="o" format="tiff" label="Denoised image" />
+        <data name="o" format="imagetiff" label="Denoised image" />
     </outputs>
     <tests>
         <test>
