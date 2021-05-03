@@ -1,4 +1,4 @@
-<tool id="trackmate" name="trackmate" version="1.0.0" python_template_version="3.5">
+<tool id="trackmatemovie" name="trackmatemovie" version="1.0.0" python_template_version="3.5">
     <requirements>
         <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:526635f4ddde571ec040a64bef0fc39f17f621e7</container>
     </requirements>
@@ -6,7 +6,7 @@
         ImageJ-linux64 --ij2 --headless --console --run /app/scripts/trackmate.py 'input_file="${input_file}",radius="${radius}",threshold="${threshold}",median="${median}",filter_spot_quality="${quality}",filter_track_displacement="${displacement}",output_file="${output_file}"'
     ]]></command>
     <inputs>
-        <param type="data" name="input_file" format="imagetiff" label="Input Image" help="image" />
+        <param type="data" name="input_file" format="movietxt" label="Input Image" help="image" />
         <param argument="-radius" type="float" value="2.5" label="Spot radius" help="Spot radius" />
         <param argument="-threshold" type="float" value="0.0" label="Threshold" help="Spot detection threshold" />
         <param argument="-median" type="integer" value="0" label="Median" help="Median filtering image for spot detection" />
