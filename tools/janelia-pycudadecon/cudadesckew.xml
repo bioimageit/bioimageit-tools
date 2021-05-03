@@ -1,9 +1,9 @@
 <tool id="cudadeskew" name="cudadeskew" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/bioimage-it/pycudadecon:fbb14e8d42d3f08a9ab6dca1dcdd300cafb660c3</container>
+        <package type="conda">pycudadecon scikit-image</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        conda activate decon_env && cudadecon -i ${i} -o ${o} -x ${x} -z ${z} -a {a} -w {w} -s {s} -p {p}
+        python $__tool_directory__cudadeskew.py -i ${i} -o ${o} -x ${x} -z ${z} -a {a} -w {w} -s {s} -p {p}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
