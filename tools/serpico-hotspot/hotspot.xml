@@ -1,6 +1,6 @@
 <tool id="hotspot" name="hotspot" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/serpico/hotspotdetection:25339fcc6fe20adbee6705592026c21b73702d14</container>
+        <package type="conda">-c bioimageit hotspot</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         hotSpotDetection -i ${i} -o ${o} -m ${m} -n ${n} -pv ${pv}

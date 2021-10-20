@@ -1,6 +1,6 @@
 <tool id="matirf" name="MATIRF" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/serpico/matirf:48317336f8dca25e1f3ef0a96c71355bb50319d9</container>
+        <package type="conda">-c bioimageit matirf</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         matirf -i ${i} -p ${p} -o ${o} -d ${d} -n ${n} -lambda ${lambda} -gamma ${gamma} -iter ${iter} -reg ${reg} -zmin ${zmin} 

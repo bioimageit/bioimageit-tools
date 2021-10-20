@@ -1,6 +1,6 @@
 <tool id="atlas" name="atlas" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/serpico/atlas:c03e9822bddb53eed0609ae2e76041a112234929</container>
+        <package type="conda">-c bioimageit atlas</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         atlas -i ${i} -o ${o} -rad ${rad} -pval ${pval} 

@@ -1,6 +1,6 @@
 <tool id="ndsafir" name="ndsafir" version="3.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/serpico/ndsafir:f32819e647efd56fc6fcdb6522fc8d5665baf0ba</container>
+        <package type="conda">-c bioimageit ndsafir</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         ndsafir -i ${i} -o ${o} -noise ${noise} -iter ${iter} -nf ${nf} -2dt ${2dt} -patch ${patch}
