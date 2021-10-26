@@ -1,9 +1,9 @@
 <tool id="ndsafir4d" name="ndsafir 4D" version="3.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="ndsafir">-c bioimageit ndsafir</package>
+        <package type="conda" env="ndsafir">-c bioimageit ndsafir python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python3 ndsafir_series.py -i ${i} -o ${o} -n ${n} -t ${t} -f ${f} -p ${p} -b ${b}
+        python $__tool_directory__ndsafir_series.py -i ${i} -o ${o} -n ${n} -t ${t} -f ${f} -p ${p} -b ${b}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="movietxt" label="Input Image" help="image" />
