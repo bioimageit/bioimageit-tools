@@ -1,6 +1,6 @@
 <tool id="spitfire3d" name="SPITFIRE 3D" version="0.1.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="spitfire">-c bioimageit spitfire</conda>
+        <package type="conda" env="spitfire">-c bioimageit spitfire</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         sdeconv3d -i ${i} -o ${o} -psf ${psf} -regularization ${regularization} -weighting ${weighting} -method ${method} -normalization ${normalization} -niter 200

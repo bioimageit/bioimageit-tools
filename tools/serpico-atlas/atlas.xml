@@ -1,6 +1,6 @@
 <tool id="atlas" name="atlas" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda">-c bioimageit atlas</package>
+        <package type="conda" env="atlas">-c bioimageit atlas</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         atlas -i ${i} -o ${o} -rad ${rad} -pval ${pval} 
