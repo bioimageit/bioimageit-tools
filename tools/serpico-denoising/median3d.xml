@@ -1,0 +1,31 @@
+<tool id="median3d" name="Median 3D" version="0.1.3" python_template_version="3.5">
+    <requirements>
+         <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        simgmedian3d -i ${i} -o ${o} -rx ${rx} -ry ${ry} -rz ${rz} -padding ${padding}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+
+        <param argument="-rx" type="integer" value="2" label="Radius X" help="Radius of the filter in the X direction" />
+        <param argument="-ry" type="integer" value="2" label="Radius Y" help="Radius of the filter in the Y direction" />
+        <param argument="-rz" type="integer" value="1" label="Radius Z" help="Radius of the filter in the Z direction" />
+        <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
+            <option value="false">False</option>
+            <option value="true">True</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="o" format="imagetiff" label="Output image" />
+    </outputs>
+    <tests>
+        <test>
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://team.inria.fr/serpico/software/nd-safir/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

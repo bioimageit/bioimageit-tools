@@ -1,4 +1,4 @@
-categories: [Image restoration, Deconvolution]
+categories: [Image reconstruction]
 description: Lattice lightsheet image reconstruction
 homepage_url: https://github.com/tlambert03/pycudadecon
 long_description: Lattice lightsheet image reconstruction

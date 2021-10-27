@@ -1,6 +1,6 @@
-<tool id="ndsafir" name="ndsafir" version="3.0.0" python_template_version="3.5">
+<tool id="ndsafir3d" name="NdSafir 3D" version="3.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="ndsafir">-c bioimageit ndsafir</package>
+        <package type="conda" env="ndsafir">python=3.9 -c bioimageit ndsafir</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         ndsafir -i ${i} -o ${o} -noise ${noise} -iter ${iter} -nf ${nf} -2dt ${2dt} -patch ${patch}
