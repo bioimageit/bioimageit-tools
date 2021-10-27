@@ -1,6 +1,6 @@
 <tool id="richardsonlucy2d" name="Richardson-Lucy 2D" version="0.1.3" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">python=3.9 -c bioimageit simglib=0.1.3</package>
+        <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgrichardsonlucy2d -i ${i} -o ${o} -sigma ${sigma} -niter ${niter} -lambda ${lambda} -padding ${padding}

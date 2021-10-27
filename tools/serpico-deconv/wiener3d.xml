@@ -1,6 +1,6 @@
 <tool id="wienerdeconv3d" name="Wiener 3D" version="0.1.3" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">python=3.9 -c bioimageit simglib=0.1.3</package>
+        <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgwiener3d -i ${i} -o ${o} -psf ${psf} -lambda ${lambda} -padding ${padding}
