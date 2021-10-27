@@ -1,6 +1,6 @@
 <tool id="spitfire2d" name="SPITFIRE 2D" version="0.1.0" python_template_version="3.5">
     <requirements>
-        <package type="conda">-c bioimageit spitfire</package>
+        <package type="conda" env="spitfire">-c bioimageit spitfire</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         sdeconv2d -i ${i} -o ${o} -sigma ${sigma} -regularization ${regularization} -weighting ${weighting} -method ${method} -normalization ${normalization} -niter 200
