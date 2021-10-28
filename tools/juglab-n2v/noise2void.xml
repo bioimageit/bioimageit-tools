@@ -1,6 +1,6 @@
 <tool id="juglab-n2v" name="noise2void" version="0.2.1" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="juglab-noise2void">python=3.7 tensorflow-gpu keras=2.2.4 -c bioimageit juglab-noise2void </package>
+        <package type="conda" env="juglab-noise2void">python=3.7 tensorflow-gpu keras=2.2.4 juglab-noise2void </package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python $__tool_directory__noise2void_train_predict.py -i ${i} -o ${o} -x ${x} -z ${z} -e ${e} -s ${s} -b ${b} -n ${n}

@@ -1,6 +1,6 @@
 <tool id="hotspot" name="hotspot" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="hotspot">-c bioimageit hotspot</package>
+        <package type="conda" env="hotspot">hotspot</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         hotSpotDetection -i ${i} -o ${o} -m ${m} -n ${n} -pv ${pv}

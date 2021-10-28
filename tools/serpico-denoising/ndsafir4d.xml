@@ -1,6 +1,6 @@
 <tool id="ndsafir4d" name="NdSafir 4D" version="3.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="ndsafir">-c bioimageit ndsafir python=3.9</package>
+        <package type="conda" env="ndsafir">ndsafir python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__ndsafir_series.py' -i ${i} -o ${o} -n ${n} -t ${t} -f ${f} -p ${p} -b ${b}
