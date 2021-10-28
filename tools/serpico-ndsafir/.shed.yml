@@ -1,6 +1,0 @@
-categories: [Denoising]
-description: multi-dimentional image denoising
-homepage_url: https://team.inria.fr/serpico/software/nd-safir/
-long_description: multi-dimentional image denoising using patch based algorithm
-name: ndsafir
-owner: serpico
