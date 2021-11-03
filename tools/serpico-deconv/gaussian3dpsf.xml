@@ -1,6 +1,6 @@
-<tool id="simggaussian3dpsf" name="3D Gaussian PSF" version="0.1.3" python_template_version="3.5">
+<tool id="simggaussian3dpsf" name="3D Gaussian PSF" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">-c sylvainprigent simglib python=3.9</package>
+        <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simggaussian3dpsf -o ${o} -sigmaxy ${sigmaxy} -sigmaz ${sigmaz} -depth ${depth} -height ${height} -width ${width}

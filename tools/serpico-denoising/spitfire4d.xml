@@ -1,6 +1,6 @@
-<tool id="spitfiredenoise4d" name="SPITFIR(e) 4D" version="0.1.3" python_template_version="3.5">
+<tool id="spitfiredenoise4d" name="SPITFIR(e) 4D" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">-c sylvainprigent simglib python=3.9</package>
+        <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgspitfiredenoise4d -i ${i} -o ${o} -regularization ${regularization} -weighting ${weighting} -method ${method} -padding ${padding} -niter 200

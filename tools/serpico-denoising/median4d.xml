@@ -1,6 +1,6 @@
-<tool id="median4d" name="Median 4D" version="0.1.3" python_template_version="3.5">
+<tool id="median4d" name="Median 4D" version="0.1.2" python_template_version="3.5">
     <requirements>
-         <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
+         <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgmedian4d -i ${i} -o ${o} -rx ${rx} -ry ${ry} -rz ${rz} -rt ${rt} -padding ${padding}
