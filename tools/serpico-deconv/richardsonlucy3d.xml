@@ -3,13 +3,12 @@
         <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        simgrichardsonlucy2d -i ${i} -o ${o} -psf ${psf} -niter ${niter} -lambda ${lambda} -padding ${padding}
+        simgrichardsonlucy3d -i ${i} -o ${o} -psf ${psf} -niter ${niter} -padding ${padding}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="3D image" />
         <param type="data" name="psf" format="imagetiff" label="PSF Image" help="3D image" />
          <param argument="-niter" type="integer" value="15" label="Niter" help="Number of iteration" />
-        <param argument="-lambda" type="float" value="0" label="Lambda" help="Regularization parameter" />
         <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
             <option value="false">False</option>
             <option value="true">True</option>
