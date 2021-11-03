@@ -6,7 +6,7 @@
         simgmedian4d -i ${i} -o ${o} -rx ${rx} -ry ${ry} -rz ${rz} -rt ${rt} -padding ${padding}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="data" name="i" format="movietxt" label="Input Image" help="image" />
 
         <param argument="-rx" type="integer" value="2" label="Radius X" help="Radius of the filter in the X direction" />
         <param argument="-ry" type="integer" value="2" label="Radius Y" help="Radius of the filter in the Y direction" />
@@ -18,7 +18,7 @@
         </param>
     </inputs>
     <outputs>
-        <data name="o" format="imagetiff" label="Output image" />
+        <data name="o" format="movietxt" label="Output image" />
     </outputs>
     <tests>
         <test>
