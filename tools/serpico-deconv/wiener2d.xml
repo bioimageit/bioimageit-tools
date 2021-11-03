@@ -8,7 +8,7 @@
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="2D image" />
         <param argument="-sigma" type="float" value="1.5" label="Sigma" help="Gaussian PSF width" />
-        <param argument="-lambda" type="float" value="1.5" label="Lambda" help="Regularization parameter" />
+        <param argument="-lambda" type="float" value="0.01" label="Lambda" help="Regularization parameter" />
         <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
             <option value="false">False</option>
             <option value="true">True</option>
