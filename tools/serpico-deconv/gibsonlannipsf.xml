@@ -8,7 +8,7 @@
     <inputs>
         <param argument="-width" type="integer" value="256" label="Width" help="Image width" />
          <param argument="-height" type="integer" value="256" label="Height" help="Image height" />
-         <param argument="-depth" type="integer" value="256" label="Depth" help="Image depth" />
+         <param argument="-depth" type="integer" value="20" label="Depth" help="Image depth" />
         <param argument="-wavelength" type="float" value="610" label="Wavelength" help="Excitation wavelength (nm)" />
         <param argument="-psxy" type="float" value="100" label="PSXY" help="Pixel size in XY (nm)" />
         <param argument="-psz" type="float" value="250" label="PSZ" help="Pixel size in Z (nm)"  />

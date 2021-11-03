@@ -8,7 +8,7 @@
     <inputs>
         <param argument="-width" type="integer" value="256" label="Width" help="Image width" />
          <param argument="-height" type="integer" value="256" label="Height" help="Image height" />
-         <param argument="-depth" type="integer" value="256" label="Depth" help="Image depth" />
+         <param argument="-depth" type="integer" value="20" label="Depth" help="Image depth" />
         <param argument="-sigmaxy" type="float" value="1.0" label="sigmaxy" help="PSF width and height" />
         <param argument="-sigmaz" type="float" value="1.0" label="sigmaz" help="PSF depth" />
     </inputs>
