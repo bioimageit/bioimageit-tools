@@ -26,7 +26,7 @@
         </test>
     </tests>
     <help><![CDATA[
-        https://team.inria.fr/serpico/software/
+        https://sylvainprigent.github.io/tutorial-denoising/denoising.html
     ]]></help>
     <citations>
         <citation type="bibtex">@unpublished{nguyen:hal-01609810,
