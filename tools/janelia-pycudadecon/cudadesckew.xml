@@ -1,6 +1,6 @@
 <tool id="cudadeskew" name="cudadeskew" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda">-c talley pycudadecon scikit-image</package>
+        <package type="conda">cudadeskew -c talley pycudadecon scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python $__tool_directory__cudadeskew.py -i ${i} -o ${o} -x ${x} -z ${z} -a {a} -w {w} -s {s} -p {p}
