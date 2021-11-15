@@ -3,7 +3,7 @@
         <package type="conda">cudadeskew -c talley pycudadecon scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python $__tool_directory__cudadeskew.py -i ${i} -o ${o} -x ${x} -z ${z} -a ${a} -w ${w} -s ${s} -p ${p}
+        python '$__tool_directory__cudadeskew.py' -i ${i} -o ${o} -x ${x} -z ${z} -a ${a} -w ${w} -s ${s} -p ${p}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
