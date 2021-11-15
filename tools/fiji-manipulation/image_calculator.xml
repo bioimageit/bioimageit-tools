@@ -3,7 +3,7 @@
         <package type="conda">image_calculator</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro image_calculator.ijm [${input1},${input2},${operator},${output}]
+        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro "C:\Users\%USERNAME%\Documents\BioimageIT_installation_files\bioimageit-tools\tools\fiji-manipulation\image_calculator.ijm" [${input1},${input2},${operator},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input1" format="imagetiff" label="First image" />

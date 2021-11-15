@@ -3,7 +3,7 @@
         <package type="conda">image_math</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro image_math.ijm [${input},${operator},${value},${output}]
+        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro "C:\Users\%USERNAME%\Documents\BioimageIT_installation_files\bioimageit-tools\tools\fiji-manipulation\image_math.ijm" [${input},${operator},${value},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />
