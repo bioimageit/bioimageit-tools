@@ -3,7 +3,7 @@
         <package type="conda">zproject</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro zproject.ijm [${input},${projection},${output}]
+        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro "C:\Users\%USERNAME%\Documents\BioimageIT_installation_files\bioimageit-tools\tools\fiji-manipulation\zproject.ijm" [${input},${projection},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />
