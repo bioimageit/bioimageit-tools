@@ -1,6 +1,6 @@
-<tool id="wienerdeconv3d" name="Wiener 3D" version="0.1.3" python_template_version="3.5">
+<tool id="wienerdeconv3d" name="Wiener 3D" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">-c sylvainprigent simglib python=3.9</package>
+        <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgwiener3d -i ${i} -o ${o} -psf ${psf} -lambda ${lambda} -padding ${padding}
@@ -8,7 +8,7 @@
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="3D image" />
         <param type="data" name="psf" format="imagetiff" label="PSF Image" help="3D image" />
-        <param argument="-lambda" type="float" value="1.5" label="Lambda" help="Regularization parameter" />
+        <param argument="-lambda" type="float" value="0.01" label="Lambda" help="Regularization parameter" />
         <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
             <option value="false">False</option>
             <option value="true">True</option>
