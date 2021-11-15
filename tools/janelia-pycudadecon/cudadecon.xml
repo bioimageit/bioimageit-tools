@@ -1,9 +1,9 @@
 <tool id="cudadecon" name="cudadecon" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda">-c talley pycudadecon scikit-image</package>
+        <package type="conda">cudadecon -c talley pycudadecon scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python $__tool_directory__cudadecon.py -i ${i} -o ${o} -p ${p} -b ${b} 
+        python '$__tool_directory__cudadecon.py' -i ${i} -o ${o} -p ${p} -b ${b} 
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
