@@ -36,9 +36,9 @@ def main(argv):
         elif opt in ("-a", "--angle"):
             angle = float(arg)  
         elif opt in ("-w", "--width"):
-            width = float(arg)  
+            width = int(arg)
         elif opt in ("-s", "--shift"):
-            shift = float(arg) 
+            shift = int(arg) 
         elif opt in ("-p", "--pad"):
             pad_val = arg              
 
