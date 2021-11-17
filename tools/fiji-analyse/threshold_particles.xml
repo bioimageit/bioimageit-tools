@@ -1,6 +1,6 @@
 <tool id="threshold_particles" name="Count particles" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="docker" env="threshold_particles">python</package>
+        <package type="conda" env="threshold_particles">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-analyse\threshold_particles.ijm" [${input},${threshold},${draw},${count},${measures}]
