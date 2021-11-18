@@ -1,9 +1,9 @@
 <tool id="image-math" name="fiji image math" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda">image_math</package>
+        <package type="conda" env="image_math">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        "C:\\Users\%USERNAME%\BioImageIT\Fiji.app\ImageJ-win64.exe" --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-manipulation\image_math.ijm" [${input},${operator},${value},${output}]
+        '$__fiji__' --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-manipulation\image_math.ijm" [${input},${operator},${value},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />

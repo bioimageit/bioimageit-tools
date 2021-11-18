@@ -1,9 +1,9 @@
 <tool id="mean-filter-3d" name="fiji mean filter 3d" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+        <package type="conda" env="mean-filter-3d">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ImageJ-linux64 --headless --console -macro mean_filter_3d.ijm '[${input},${radiusx},${radiusy},${radiusz},${output}]'
+        '$__fiji__' --headless --console -macro mean_filter_3d.ijm [${input},${radiusx},${radiusy},${radiusz},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />
