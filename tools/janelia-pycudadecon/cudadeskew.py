@@ -17,13 +17,13 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"i:o:x:z:a:w:s:p:",["ifile=","ofile=","dxdata=","dzdata=","angle=","width=","shift=", "pad="])
     except getopt.GetoptError:
-        print('cudadeskew.py -i <ifile> -o <ofile> -x <dxdata> -y <dzdata> -a <angle> -w <width> -s <shift> -p <pad>')
+        print('cudadeskew.py -i <ifile> -o <ofile> -x <dxdata> -z <dzdata> -a <angle> -w <width> -s <shift> -p <pad>')
         sys.exit(2)
     for opt, arg in opts:
         # print('opt=', opt)
         # print('arg=', arg)
         if opt == '-h':
-            print('cudadeskew.py -i <ifile> -o <ofile> -x <dxdata> -y <dzdata> -a <angle> -w <width> -s <shift> -p <pad>')
+            print('cudadeskew.py -i <ifile> -o <ofile> -x <dxdata> -z <dzdata> -a <angle> -w <width> -s <shift> -p <pad>')
             sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
@@ -36,9 +36,9 @@ def main(argv):
         elif opt in ("-a", "--angle"):
             angle = float(arg)  
         elif opt in ("-w", "--width"):
-            width = float(arg)  
+            width = int(arg)
         elif opt in ("-s", "--shift"):
-            shift = float(arg) 
+            shift = int(arg) 
         elif opt in ("-p", "--pad"):
             pad_val = arg              
 

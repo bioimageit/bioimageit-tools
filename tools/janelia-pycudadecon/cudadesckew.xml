@@ -1,14 +1,14 @@
 <tool id="cudadeskew" name="cudadeskew" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda">-c talley pycudadecon scikit-image</package>
+        <package type="conda" env="cudadeskew">-c talley pycudadecon scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python $__tool_directory__cudadeskew.py -i ${i} -o ${o} -x ${x} -z ${z} -a {a} -w {w} -s {s} -p {p}
+        python '$__tool_directory__cudadeskew.py' -i ${i} -o ${o} -x ${x} -z ${z} -a ${a} -w ${w} -s ${s} -p ${p}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="-x" type="float" value="0.1" label="dxdata" help="dxdata" />
-        <param argument="-y" type="float" value="0.5" label="dzdata" help="dzdata" />
+        <param argument="-z" type="float" value="0.5" label="dzdata" help="dzdata" />
         <param argument="-a" type="float" value="31.5" label="angle" help="angle" />
         <param argument="-w" type="float" value="0" label="width" help="width" />
         <param argument="-s" type="float" value="0" label="shift" help="shift" />

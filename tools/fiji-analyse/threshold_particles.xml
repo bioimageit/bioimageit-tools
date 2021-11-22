@@ -1,9 +1,9 @@
 <tool id="threshold_particles" name="Count particles" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+        <package type="conda" env="threshold_particles">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ImageJ-linux64 --headless --console -macro threshold_particles.ijm '[${input},${threshold},${draw},${count},${measures}]'
+        '$__fiji__' --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-analyse\threshold_particles.ijm" [${input},${threshold},${draw},${count},${measures}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />

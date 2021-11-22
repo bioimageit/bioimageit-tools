@@ -1,9 +1,9 @@
 <tool id="trackmate" name="trackmate" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:526635f4ddde571ec040a64bef0fc39f17f621e7</container>
+        <package type="conda" env="trackmate">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ImageJ-linux64 --ij2 --headless --console --run /app/scripts/trackmate.py 'input_file="${input_file}",radius="${radius}",threshold="${threshold}",median="${median}",filter_spot_quality="${quality}",filter_track_displacement="${displacement}",output_file="${output_file}"'
+        '$__fiji__' --ij2 --headless --console --run "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-trackmate\trackmate.py" input_file="${input_file}",radius="${radius}",threshold="${threshold}",median="${median}",filter_spot_quality="${quality}",filter_track_displacement="${displacement}",output_file="${output_file}"
     ]]></command>
     <inputs>
         <param type="data" name="input_file" format="imagetiff" label="Input Image" help="image" />

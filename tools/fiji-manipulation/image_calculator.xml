@@ -1,9 +1,9 @@
 <tool id="image-calculator" name="fiji image calculator" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+        <package type="conda" env="image_calculator">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ImageJ-linux64 --headless --console -macro image_calculator.ijm '[${input1},${input2},${operator},${output}]'
+        '$__fiji__' --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-manipulation\image_calculator.ijm" [${input1},${input2},${operator},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input1" format="imagetiff" label="First image" />

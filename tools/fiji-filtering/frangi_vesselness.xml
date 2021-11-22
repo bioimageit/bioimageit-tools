@@ -1,9 +1,9 @@
 <tool id="frangi-vesselness" name="fiji Frangi Vesselness" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <container type="docker">registry.gitlab.inria.fr/bioimage-it/fiji-docker:8d6153f4f9e7fdf3851ce44e425cb1e66e36164e</container>
+        <package type="conda" env="frangi-vesselness">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ImageJ-linux64 --headless --console -macro frangi_vesselness.ijm '[${input},${dogauss},${spacing1},${spacing2},${scale1},${scale2},${output}]'
+        '$__fiji__' --headless --console -macro frangi_vesselness.ijm [${input},${dogauss},${spacing1},${spacing2},${scale1},${scale2},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />
