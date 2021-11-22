@@ -7,15 +7,15 @@
     ]]></command>
     <inputs>
         <param type="data" name="i" format="movietxt" label="Input Image" help="image" />
-        <param argument="-n" type="select" label="Noise">
+        <param argument="-n" type="select" label="Noise" help="Model used to evaluate the noise variance">
             <option value="0">Gauss</option>
             <option value="1">Poisson-Gauss</option>
             <option value="2">Adaptative-Gauss</option>
         </param>
         <param argument="-p" type="string" value="7x7x1" label="Patch" help="shoud be written a AxBxC where A, B and C are the patch radius in each dimension" />
-        <param argument="-f" type="float" value="1" label="Noise factor" help="Noise factor (only for Adaptative-Gauss noise)" />
-        <param argument="-t" type="integer" value="5" label="Iterations" help="Number of iterations" />
-        <param argument="-b" type="integer" value="10" label="Time batch" help="Number time frames in one run" />
+        <param argument="-f" type="float" value="1" label="Noise factor" help="Noise factor (only for Adaptative-Gauss noise)" optional="true" />
+        <param argument="-t" type="integer" value="5" min="0" label="Iterations" help="Number of iterations" optional="true"/>
+        <param argument="-b" type="integer" value="0" label="Time batch" help="Number time frames in one run (0 for all movie in once)" optional="true"/>
     </inputs>
     <outputs>
         <data name="o" format="movietxt" label="Output image" />

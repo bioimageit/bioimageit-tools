@@ -1,6 +1,6 @@
-<tool id="median3d" name="Median 3D" version="0.1.2" python_template_version="3.5">
+<tool id="median3d" name="Median 3D" version="0.1.3" python_template_version="3.5">
     <requirements>
-         <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
+         <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgmedian3d -i ${i} -o ${o} -rx ${rx} -ry ${ry} -rz ${rz} -padding ${padding}
@@ -24,7 +24,7 @@
         </test>
     </tests>
     <help><![CDATA[
-        https://sylvainprigent.github.io/tutorial-denoising/denoising.html
+        https://team.inria.fr/serpico/software/nd-safir/
     ]]></help>
     <citations>
     </citations>

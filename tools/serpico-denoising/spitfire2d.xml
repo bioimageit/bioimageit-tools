@@ -1,6 +1,6 @@
-<tool id="spitfiredenoise2d" name="SPITFIR(e) 2D" version="0.1.2" python_template_version="3.5">
+<tool id="spitfiredenoise2d" name="SPITFIR(e) 2D" version="0.1.3" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
+        <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgspitfiredenoise2d -i ${i} -o ${o} -regularization ${regularization} -weighting ${weighting} -method ${method} -padding ${padding} -niter 200
@@ -10,8 +10,8 @@
         <param argument="-regularization" type="float" value="2" label="Regularization" help="Regularization parameter pow(2,-x)" />
         <param argument="-weighting" type="float" min="0.0" max="1.0" value="0.6" label="Weighting" help="Regularization parameter pow(2,-x)" optional="true" />
         <param argument="-method" value="HV" type="select" label="Method" optional="true" >
-            <option value="HV">Hessian variation</option>
             <option value="SV">Sparse variation</option>
+            <option value="HV">Hessian variation</option>
         </param>
         <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
             <option value="false">False</option>
@@ -26,7 +26,7 @@
         </test>
     </tests>
     <help><![CDATA[
-        https://sylvainprigent.github.io/tutorial-denoising/denoising.html
+        https://team.inria.fr/serpico/software/
     ]]></help>
     <citations>
         <citation type="bibtex">@unpublished{nguyen:hal-01609810,
