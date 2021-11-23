@@ -30,7 +30,7 @@ import fiji.plugin.trackmate.features.FeatureFilter as FeatureFilter
     
 # Get currently selected image
 if str(input_file.getPath()).endswith('.txt'):
-	IJ.runMacroFile("/app/scripts/read_txtmovie.ijm", input_file.getPath())
+	IJ.runMacroFile("read_txtmovie.ijm", input_file.getPath())
 	imp = IJ.getImage() 
 else:
 	imp = IJ.openImage(input_file.getPath())
