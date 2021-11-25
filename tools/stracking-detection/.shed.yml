@@ -1,0 +1,7 @@
+categories: 
+  - Deconvolution
+description: 2D and 3D image deconvolution
+homepage_url: https://team.inria.fr/serpico/software/
+long_description: 2D and 3D image deconvolution using sparse variation model 
+name: Spitfire
+owner: serpico
