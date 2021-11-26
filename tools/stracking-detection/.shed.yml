@@ -1,7 +1,6 @@
-categories: 
-  - Deconvolution
-description: 2D and 3D image deconvolution
-homepage_url: https://team.inria.fr/serpico/software/
-long_description: 2D and 3D image deconvolution using sparse variation model 
-name: Spitfire
+categories: [Spots detection]
+description: Tracker
+homepage_url: https://sylvainprigent.github.io/napari-stracking/
+long_description: Scientific library track particles in 2D+t and 3D+t images 
+name: Stracking-Detection
 owner: serpico

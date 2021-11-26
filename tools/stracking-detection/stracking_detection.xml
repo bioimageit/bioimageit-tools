@@ -1,0 +1,21 @@
+<tool id="stracking_detection" name="stracking-detection" version="0.1.2" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="stracking">python=3.8 stracking</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__cudadecon.py' -i ${i} -o ${o} -p ${p} -b ${b} 
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="data" name="p" format="imagetiff" label="PSF Image" help="image" />
+        <param argument="-b" type="float" value="0" label="Background" help="Intensity of the background" />
+    </inputs>
+    <outputs>
+        <data name="o" format="imagetiff" label="Output image" />
+    </outputs>
+    <help><![CDATA[
+        https://github.com/sylvainprigent/stracking
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
