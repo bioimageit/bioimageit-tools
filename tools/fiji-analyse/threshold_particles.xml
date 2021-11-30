@@ -3,7 +3,7 @@
         <package type="conda" env="threshold_particles">python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        '$__fiji__' --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-analyse\threshold_particles.ijm" [${input},${threshold},${draw},${count},${measures}]
+        '$__fiji__' --headless --console -macro "threshold_particles.ijm" [${input},${threshold},${draw},${count},${measures}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />

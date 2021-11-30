@@ -3,7 +3,7 @@
         <package type="conda">fiji_invert</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        '$__fiji__' --headless --console -macro "C:\Users\%USERNAME%\BioImageIT\toolboxes\tools\fiji-manipulation\invert.ijm" [${input},${output}]
+        '$__fiji__' --headless --console -macro "invert.ijm" [${input},${output}]
     ]]></command>
     <inputs>
         <param type="data" name="input" format="imagetiff" label="Input image" />
