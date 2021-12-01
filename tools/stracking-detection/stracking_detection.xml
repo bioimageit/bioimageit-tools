@@ -3,12 +3,17 @@
         <package type="conda" env="stracking">python=3.8 stracking</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__cudadecon.py' -i ${i} -o ${o} -p ${p} -b ${b} 
+        <!-- python '$__tool_directory__stracking_LoG.py' -i ${i} -o ${o} -mi ${mi} -ma ${ma} -t ${t} -r ${r} -ov ${ov} -n ${n} -l ${l} 
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
-        <param type="data" name="p" format="imagetiff" label="PSF Image" help="image" />
-        <param argument="-b" type="float" value="0" label="Background" help="Intensity of the background" />
+        <param argument="-mi" type="float" value="1" label="Minimal sigma value" help="Minimal sigma value" />
+		<param argument="-ma" type="float" value="5" label="Maximal sigma value" help="Maximal sigma value" />
+        <param argument="-t" type="float" value="0.2" label="Threshold" help="Threshold" />
+		<param argument="-r" type="float" value="1.6" label="Sigma ratio" help="Sigma ratio" />
+		<param argument="-ov" type="float" value="0.5" label="Overlap" help="Overlap" />
+		<param argument="-n" type="integer" value="10" label="Number sigmas" help="Number of sigmas" />
+		<param argument="-l" type="string" value="False" label="Log scale" help="Log scale" />
     </inputs>
     <outputs>
         <data name="o" format="imagetiff" label="Output image" />
