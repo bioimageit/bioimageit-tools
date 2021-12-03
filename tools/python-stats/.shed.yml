@@ -1,0 +1,7 @@
+categories: 
+  - Statistics
+description: Hypothesis testing 
+homepage_url: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
+long_description: Hypothesis testing 
+name: htesting
+owner: sprigent
