@@ -1,9 +1,9 @@
-<tool id="stracking_detection" name="stracking-detection" version="0.1.2" python_template_version="3.5">
+<tool id="stracking_detection" name="stracking-detection DoG" version="0.1.2" python_template_version="3.5">
     <requirements>
         <package type="conda" env="stracking">python=3.8 stracking</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__stracking_LoG.py' -i ${i} -o ${o} -mi ${mi} -ma ${ma} -t ${t} -r ${r} -ov ${ov} -n ${n} -l ${l} 
+        python '$__tool_directory__stracking_DoG.py' -i ${i} -o ${o} -mi ${mi} -ma ${ma} -t ${t} -r ${r} -ov ${ov} -n ${n} -l ${l} 
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
