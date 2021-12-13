@@ -3,7 +3,7 @@
         <package type="conda" env="juglab-noise2void">python=3.6 tensorflow-gpu=1.12.0 keras=2.2.4 juglab-noise2void </package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python $__tool_directory__noise2void_train_predict.py -i ${i} -o ${o} -x ${x} -z ${z} -e ${e} -s ${s} -b ${b} -n ${n}
+        python '$__tool_directory__noise2void_train_predict.py' -i ${i} -o ${o} -x ${x} -z ${z} -e ${e} -s ${s} -b ${b} -n ${n}
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
