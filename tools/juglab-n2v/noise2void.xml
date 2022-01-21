@@ -8,7 +8,7 @@
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="-x" type="float" value="64" label="patch xy" help="patch size in XY plan" />
-        <param argument="-z" type="float" value="32" label="patchz" help="patch size in Z plan" />
+        <param argument="-z" type="float" value="32" label="patch z" help="patch size in Z plan" />
         <param argument="-e" type="float" value="20" label="epochs" help="Number of epochs" />
         <param argument="-s" type="float" value="200" label="steps" help="Steps per epoch" />
         <param argument="-b" type="float" value="4" label="batch" help="Batch size" />
