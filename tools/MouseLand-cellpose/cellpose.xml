@@ -17,15 +17,6 @@
         </param>
         
     </inputs>
-    <!-- <tests>
-        <test>
-            <param name="i" value="arbaGFPProjDebruiteNorm.tif" />
-            <param name="m" value="3" />
-            <param name="n" value="5" />
-            <param name="pv" value="0.2" />
-            <output name="o" file="result.tif" compare="sim_size" />
-        </test>
-    </tests> -->
     <help><![CDATA[
         https://github.com/MouseLand/cellpose
     ]]></help>
