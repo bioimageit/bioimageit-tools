@@ -1,6 +1,6 @@
-<tool id="hotspot" name="hotspot" version="1.0.0" python_template_version="3.5">
+<tool id="cellpose" name="cellpose" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="hotspot">cellpose</package>
+        <package type="conda" env="cellpose">cellpose</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__cellpose_notebook.py' --infile ${infile} ${--use_gpu} --pretrained_model ${model}  
