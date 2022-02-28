@@ -3,18 +3,13 @@
         <package type="conda" env="hotspot">cellpose</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python -m cellpose --dir ${dir} --pretrained_model ${model} --chan 2 --chan2 3 --save_png --verbose ${--use_gpu}
-        python '$__tool_directory__cellpose_series.py' --dir ${dir} --pretrained_model ${model} --chan 2 --chan2 3 --save_png --verbose ${--use_gpu}
+        python '$__tool_directory__cellpose_notebook.py' --infile ${infile} ${--use_gpu} --pretrained_model ${model}  
     ]]></command>
     <inputs>
-        <param type="string" argument="--dir"  label="Input folder" help="Folder containing data to run or train on" />
-        <param argument="-m" type="integer" value="3" label="patch size" help="patch size (radius)" />
-        <param argument="-n" type="integer" value="5" label="neighborhood size" help="neighborhood size (radius)" />
-        <param argument="-pv" type="float" value="0.2" label="p-value" help="p-value for false alarm" />
-        
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />   
         <param argument="--pretrained_model" type="select" label="Pretrained model" help="Cyto pretrained model or none">
             <option value="cyto">Cyto</option>
-            <option value="None">None</option>
+            <option value="nuclei">Nuclei</option>
         </param>
         <param argument="--use_gpu" type="select" label="Use GPU" help="Use Nvidia GPU cuda cores or not">
             <option value="--use_gpu">Use GPU</option>
@@ -22,13 +17,7 @@
         </param>
         
     </inputs>
-    <outputs>
-        <param argument="" type="select" label="Save format" help="Save in TIF or PNG">
-            <option value="--save_png">PNG</option>
-            <option value="--save_tif">TIF</option>
-        </param>
-    </outputs>
-    <tests>
+    <!-- <tests>
         <test>
             <param name="i" value="arbaGFPProjDebruiteNorm.tif" />
             <param name="m" value="3" />
@@ -36,9 +25,9 @@
             <param name="pv" value="0.2" />
             <output name="o" file="result.tif" compare="sim_size" />
         </test>
-    </tests>
+    </tests> -->
     <help><![CDATA[
-        https://team.inria.fr/serpico/software/hotspotdetection/
+        https://github.com/MouseLand/cellpose
     ]]></help>
     <citations>
     </citations>
