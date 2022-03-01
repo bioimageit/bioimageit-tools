@@ -88,7 +88,7 @@ parser.add_argument('--exclude_on_edges', action='store_true', help='discard mas
 
 ## output settings
 output_args = parser.add_argument_group("output arguments")
-output_args.add_argument('--save_tif', required=False, default='True', type=str, help='save masks as tif and outlines as text file for ImageJ')
+output_args.add_argument('--save_tif', action='store_true', help='save masks as tif and outlines as text file for ImageJ')
 output_args.add_argument('--no_npy', action='store_true', help='suppress saving of npy')
 output_args.add_argument('--savedir',
                         default=cellpose_temp, type=str, help='folder to which segmentation results will be saved (defaults to input image directory)')
@@ -132,18 +132,18 @@ parser.add_argument('--testing', action='store_true', help='flag to suppress CLI
 
 args = parser.parse_args()
 
-if args.save_tif == "True" :
-    save_tif = True
-    save_png = False
-else :
-    save_tif = False
-    save_png = True
+# if args.save_tif == "True" :
+#     save_tif = True
+#     save_png = False
+# else :
+#     save_tif = False
+#     save_png = True
 
 
 print("GPU usage = {}".format(args.use_gpu))
 print("PRETRANED MODEL = {}".format(args.pretrained_model))
 print("Save Tif mask = {}".format(args.save_tif))
-print("Save PNG mask = {}".format(save_png))
+# print("Save PNG mask = {}".format(save_png))
 
 
 input_file_path = args.infile.name
@@ -204,7 +204,7 @@ for chan, filename in zip(channels, files):
     io.masks_flows_to_seg(img, masks, flows, diams, filename, chan)
 
     # save results as png
-    io.save_masks(img, masks, flows, filename, png = save_png, tif = save_tif) 
+    io.save_masks(img, masks, flows, filename, png = False, tif = True) 
 
 
 # # Copy/paste -o to output directory
