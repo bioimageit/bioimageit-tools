@@ -1,6 +1,6 @@
 <tool id="stracking_detection" name="stracking-detection DoH" version="0.1.2" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="stracking">python=3.9 && pip install stracking=0.1.5</package>
+        <package type="conda" env="stracking">python=3.9 pip install stracking=0.1.5</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__stracking_DoH.py' -i ${i} -o ${o} -mi ${mi} -ma ${ma} -t ${t} -ov ${ov} -n ${n} -l ${l} 

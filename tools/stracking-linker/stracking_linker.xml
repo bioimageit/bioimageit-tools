@@ -1,6 +1,6 @@
 <tool id="stracking_linker" name="stracking-linker" version="0.1.5" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="stracking">python=3.9 && pip install stracking=0.1.5</package>
+        <package type="conda" env="stracking">python=3.9 pip install stracking=0.1.5</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
        ssplinker -i ${i} -o ${o} -p ${p} -f st.json -c ${c} -g ${g} 
