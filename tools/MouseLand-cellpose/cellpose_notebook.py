@@ -1,7 +1,5 @@
 import numpy as np
 import time, os, sys, argparse, shutil, glob
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 from cellpose import utils, io, models
 from pathlib import Path
 print("Imports done")
@@ -36,9 +34,9 @@ hardware_args = parser.add_argument_group("hardware arguments")
 
 ## input file -i
 parser.add_argument('--infile', type = argparse.FileType('r'), help = 'Cellpose parameters')
-if hardware_args.add_argument('--use_gpu', action='store_true', help='use gpu if torch or mxnet with cuda installed'):
+if hardware_args.add_argument('--use_gpu', action='store_true', help='use gpu if torch or mxnet with cuda installed') == True:
     use_gpu = True
-else:
+else :
     use_gpu = False
 hardware_args.add_argument('--check_mkl', action='store_true', help='check if mkl working')
 hardware_args.add_argument('--mkldnn', action='store_true', help='for mxnet, force MXNET_SUBGRAPH_BACKEND = "MKLDNN"')
@@ -193,7 +191,7 @@ channels = [[2,3], [0,0], [0,0]]
 # >>> io.save_to_png(imgs, masks, flows, files)
 
 # or in a loop
-print("Saving seg and png...")
+print("Saving seg and tif...")
 for chan, filename in zip(channels, files):
     img = io.imread(filename)
     masks, flows, styles, diams = model.eval(img, diameter=None, channels=chan)
@@ -202,54 +200,54 @@ for chan, filename in zip(channels, files):
     io.masks_flows_to_seg(img, masks, flows, diams, filename, chan)
 
     # save results as png
-    io.save_to_png(img, masks, flows, filename)
+    io.save_masks(img, masks, flows, filename, png = False, tif = True) 
 
 
-# Copy/paste -o to output directory
-cellpose_out_dir = os.path.join(input_dirname, "cellpose_out")
+# # Copy/paste -o to output directory
+# cellpose_out_dir = os.path.join(input_dirname, "cellpose_out")
 
-os.chdir(input_dirname)
-print("Current directory = {}".format(input_dirname))
-if not os.path.exists("cellpose_out") :
-    print("creating output directory...")
-    os.mkdir(cellpose_out_dir)
+# os.chdir(input_dirname)
+# print("Current directory = {}".format(input_dirname))
+# if not os.path.exists("cellpose_out") :
+#     print("creating output directory...")
+#     os.mkdir(cellpose_out_dir)
 
-## Masks
-output_mask_name = glob.glob(os.path.join(cellpose_temp ,"*_cp_masks*"), recursive = True)
-original_o1 = str(output_mask_name)
-original_o1 = original_o1[2:len(original_o1)-2]
-target_o = cellpose_out_dir
+# ## Masks
+# output_mask_name = glob.glob(os.path.join(cellpose_temp ,"*_cp_masks*"), recursive = True)
+# original_o1 = str(output_mask_name)
+# original_o1 = original_o1[2:len(original_o1)-2]
+# target_o = cellpose_out_dir
 
-print("Moving output files in output directory...")
-for mask in output_mask_name :
-    shutil.copy(mask, target_o)
-
-
-## TXT
-output_txt_name = glob.glob(os.path.join(cellpose_temp ,"*.txt"), recursive = True)
-original_o2 = str(output_txt_name)
-original_o2 = original_o2[2:len(original_o2)-2]
-target_o = cellpose_out_dir
+# print("Moving output files in output directory...")
+# for mask in output_mask_name :
+#     shutil.copy(mask, target_o)
 
 
-for txt in output_txt_name :
-    shutil.copy(txt, target_o)
+# ## TXT
+# output_txt_name = glob.glob(os.path.join(cellpose_temp ,"*.txt"), recursive = True)
+# original_o2 = str(output_txt_name)
+# original_o2 = original_o2[2:len(original_o2)-2]
+# target_o = cellpose_out_dir
 
 
-## NPY
-output_npy_name = glob.glob(os.path.join(cellpose_temp ,"*.npy"), recursive = True)
-original_o3 = str(output_npy_name)
-original_o3 = original_o3[2:len(original_o3)-2]
-target_o = cellpose_out_dir
+# for txt in output_txt_name :
+#     shutil.copy(txt, target_o)
 
 
-for npy in output_npy_name :
-    shutil.copy(npy, target_o)
+# ## NPY
+# output_npy_name = glob.glob(os.path.join(cellpose_temp ,"*.npy"), recursive = True)
+# original_o3 = str(output_npy_name)
+# original_o3 = original_o3[2:len(original_o3)-2]
+# target_o = cellpose_out_dir
 
 
-# Remove cellpose_temp directory
-os.chdir(workspace)
-print("Removing temporary directory...")
-shutil.rmtree(cellpose_temp, ignore_errors=False, onerror=None)
+# for npy in output_npy_name :
+#     shutil.copy(npy, target_o)
+
+
+# # Remove cellpose_temp directory
+# os.chdir(workspace)
+# print("Removing temporary directory...")
+# shutil.rmtree(cellpose_temp, ignore_errors=False, onerror=None)
 
 print("JOB DONE !")

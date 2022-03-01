@@ -3,11 +3,11 @@
         <package type="conda" env="cellpose">cellpose</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__cellpose_notebook.py' --infile ${infile} ${--use_gpu} --pretrained_model ${model}  
+        python '$__tool_directory__cellpose_notebook.py' --infile ${i} ${--use_gpu} --pretrained_model ${pretrained_model}  
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />   
-        <param argument="--pretrained_model" type="select" label="Pretrained model" help="Cyto pretrained model or none">
+        <param argument="--pretrained_model" type="select" label="Pretrained model" help="Cyto pretrained model or nuclei">
             <option value="cyto">Cyto</option>
             <option value="nuclei">Nuclei</option>
         </param>
@@ -15,8 +15,10 @@
             <option value="--use_gpu">Use GPU</option>
             <option value="">None</option>
         </param>
-        
     </inputs>
+    <outputs>
+        <param type="data" name="savetiff" format="imagetiff" label="Output mask" help="Mask image" />
+    </outputs>>
     <help><![CDATA[
         https://github.com/MouseLand/cellpose
     ]]></help>
