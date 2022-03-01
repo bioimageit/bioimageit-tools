@@ -34,10 +34,7 @@ hardware_args = parser.add_argument_group("hardware arguments")
 
 ## input file -i
 parser.add_argument('--infile', type = argparse.FileType('r'), help = 'Cellpose parameters')
-if hardware_args.add_argument('--use_gpu', action='store_true', help='use gpu if torch or mxnet with cuda installed') == True:
-    use_gpu = True
-else :
-    use_gpu = False
+hardware_args.add_argument('--use_gpu', required=False, default='True', type=str, help='use gpu if torch or mxnet with cuda installed')
 hardware_args.add_argument('--check_mkl', action='store_true', help='check if mkl working')
 hardware_args.add_argument('--mkldnn', action='store_true', help='for mxnet, force MXNET_SUBGRAPH_BACKEND = "MKLDNN"')
 
@@ -91,8 +88,7 @@ parser.add_argument('--exclude_on_edges', action='store_true', help='discard mas
 
 ## output settings
 output_args = parser.add_argument_group("output arguments")
-output_args.add_argument('--save_png', action='store_true', help='save masks as png and outlines as text file for ImageJ')
-output_args.add_argument('--save_tif', action='store_true', help='save masks as tif and outlines as text file for ImageJ')
+output_args.add_argument('--save_tif', required=False, default='True', type=str, help='save masks as tif and outlines as text file for ImageJ')
 output_args.add_argument('--no_npy', action='store_true', help='suppress saving of npy')
 output_args.add_argument('--savedir',
                         default=cellpose_temp, type=str, help='folder to which segmentation results will be saved (defaults to input image directory)')
@@ -136,10 +132,18 @@ parser.add_argument('--testing', action='store_true', help='flag to suppress CLI
 
 args = parser.parse_args()
 
-print("GPU usage = {}".format(use_gpu))
+if args.save_tif == "True" :
+    save_tif = True
+    save_png = False
+else :
+    save_tif = False
+    save_png = True
+
+
+print("GPU usage = {}".format(args.use_gpu))
 print("PRETRANED MODEL = {}".format(args.pretrained_model))
-
-
+print("Save Tif mask = {}".format(args.save_tif))
+print("Save PNG mask = {}".format(save_png))
 
 
 input_file_path = args.infile.name
@@ -165,7 +169,7 @@ files = [target_i]
 # RUN CELLPOSE
 # DEFINE CELLPOSE MODEL
 # model_type='cyto' or model_type='nuclei'
-model = models.Cellpose(gpu=use_gpu, model_type=args.pretrained_model)
+model = models.Cellpose(gpu=args.use_gpu, model_type=args.pretrained_model)
 
 # define CHANNELS to run segementation on
 # grayscale=0, R=1, G=2, B=3
@@ -191,7 +195,7 @@ channels = [[2,3], [0,0], [0,0]]
 # >>> io.save_to_png(imgs, masks, flows, files)
 
 # or in a loop
-print("Saving seg and tif...")
+print("Saving seg and tif or png...")
 for chan, filename in zip(channels, files):
     img = io.imread(filename)
     masks, flows, styles, diams = model.eval(img, diameter=None, channels=chan)
@@ -200,7 +204,7 @@ for chan, filename in zip(channels, files):
     io.masks_flows_to_seg(img, masks, flows, diams, filename, chan)
 
     # save results as png
-    io.save_masks(img, masks, flows, filename, png = False, tif = True) 
+    io.save_masks(img, masks, flows, filename, png = save_png, tif = save_tif) 
 
 
 # # Copy/paste -o to output directory

@@ -1,6 +1,5 @@
-categories: 
-  - Segmentation
-description: cellpose
+categories: [Segmentation]
+description: Cellpose
 homepage_url: https://cellpose.readthedocs.io/en/latest/index.html
 long_description: Anatomical segmentation algorithm written in Python 
 name: cellpose
