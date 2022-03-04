@@ -10,8 +10,7 @@
         <param type="data" name="label" format="imagetiff" label="Label Image" help="Label image" />  
     </inputs>
     <outputs>
-<!--         <data name="csv" format="numbercsv" label="csv" /> 
- -->    </outputs>>
+    </outputs>>
     <help><![CDATA[
         https://github.com/MouseLand/cellpose
     ]]></help>
