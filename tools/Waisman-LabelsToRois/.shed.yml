@@ -1,6 +1,6 @@
-categories: [Segmentation]
-description: Cellpose
-homepage_url: https://cellpose.readthedocs.io/en/latest/index.html
-long_description: Anatomical segmentation algorithm written in Python 
-name: cellpose
-owner: Stringer Lab
+categories: [Measure]
+description: LabelsToRois
+homepage_url: https://labelstorois.github.io/
+long_description: LabelsToROIs is a FIJI plugin that provides the tools to generate the regions of interest (ROIs) from label images. It also allows to adjust the size of these ROIs and to generate measurements from the original images in the different channels. 
+name: LabelsToRois
+owner: Ariel Waisman
