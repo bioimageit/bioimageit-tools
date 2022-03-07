@@ -35,7 +35,9 @@ hardware_args = parser.add_argument_group("hardware arguments")
 ## input file -i
 parser.add_argument('--infile', type = argparse.FileType('r'), help = 'Cellpose parameters')
 hardware_args.add_argument('--use_gpu', required=False, default='True', type=str, help='use gpu if torch or mxnet with cuda installed')
-parser.add_argument('--diameter', type = int, default = "0")
+parser.add_argument('--diameter', type = float, default = "0")
+parser.add_argument('--auto_diam', type = str, default = 'False', help = 'Automated estimation of the diameter')
+parser.add_argument('--channels', type = str, default = '[0,0]', help = '[0,0] IF YOU HAVE GRAYSCALE, [2,3] IF YOU HAVE G=cytoplasm and B=nucleus, [2,1] IF YOU HAVE G=cytoplasm and R=nucleus')
 
 # settings for locating and formatting images
 input_img_args = parser.add_argument_group("input image arguments")
@@ -55,8 +57,28 @@ output_args.add_argument('--out', help = 'output tif mask')
 
 
 args = parser.parse_args()
+diam = 0
+
+if args.auto_diam == "False" :
+    diam = args.diameter
+elif args.auto_diam == "True" :
+    diam = None
+
+chan = []
+if args.channels == "[0,0]":
+    chan = [0,0]
+    print("GRAYSCALE")
+elif args.channels == "[2,3]":
+    chan = [2,3]
+    print("GB")
+elif args.channels == "[2,1]":
+    chan = [2,1]
+    print("GR")
 
 
+
+print("Automated estimation of diameter : {}".format(args.auto_diam))
+print("diameter = {}".format(diam))
 print("GPU usage : {}".format(args.use_gpu))
 print("PRETRANED MODEL : {}".format(args.pretrained_model))
 
@@ -68,6 +90,7 @@ print("Input dirname : {}".format(input_dirname))
 input_file_name = input_file_path.replace(input_dirname, "")
 input_file_name = input_file_name[1:len(input_file_name)]
 print("Input file name : {}".format(input_file_name))
+print("Channels : {}".format(args.channels))
 
 
 ## Copy/paste -i to cellpose_temp directory
@@ -97,7 +120,7 @@ model = models.Cellpose(gpu=args.use_gpu, model_type=args.pretrained_model)
 # channels = [2,1] # IF YOU HAVE G=cytoplasm and R=nucleus
 
 # or if you have different types of channels in each image
-channels = [[0,0]]
+channels = [chan]
 
 # if diameter is set to None, the size of the cells is estimated on a per image basis
 # you can set the average cell `diameter` in pixels yourself (recommended) 
@@ -113,7 +136,7 @@ channels = [[0,0]]
 print("Saving seg and tif...")
 for chan, filename in zip(channels, files):
     img = io.imread(filename)
-    masks, flows, styles, diams = model.eval(img, diameter=args.diameter, channels=chan)
+    masks, flows, styles, diams = model.eval(img, diameter = diam, channels = chan)
 
     # save results so you can load in gui
     # io.masks_flows_to_seg(img, masks, flows, diams, args.out, chan)
