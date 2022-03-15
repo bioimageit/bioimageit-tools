@@ -1,6 +1,6 @@
 categories: [Measure]
-description: LabelsToRois
-homepage_url: https://labelstorois.github.io/
-long_description: LabelsToROIs is a FIJI plugin that provides the tools to generate the regions of interest (ROIs) from label images. It also allows to adjust the size of these ROIs and to generate measurements from the original images in the different channels. 
-name: LabelsToRois
-owner: Ariel Waisman
+description: LabelsMeasure
+homepage_url: 
+long_description: LabelsMeasure provides the tools to generate the regions of interest from label images
+name: LabelsMeasure
+owner: Sylvan Prigent & Léo Maury
