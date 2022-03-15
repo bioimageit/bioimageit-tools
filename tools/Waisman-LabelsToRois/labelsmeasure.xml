@@ -1,9 +1,9 @@
 <tool id="LabelsMeasure" name="LabelsMeasure" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="LabelsToRois">python scikit-image</package>
+        <package type="conda" env="LabelsMeasure">python scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__LabelsMeasure.py' --original ${original} --label ${label} --binary_map ${binary_map} --pixel ${pixel}
+        python '$__tool_directory__LabelsMeasure.py' --original ${original} --label ${label} --binary_map ${binary_map} --pixel ${pixel} --out ${out}
     ]]></command>
     <inputs>
         <param type="data" name="original" format="imagetiff" label="Original Image" help="Original image" />  
@@ -15,6 +15,7 @@
         <param argument="--pixel" type="integer" value="0" label="Pixel erosion" help="Reduce the ROIs of the label image" optional="true"/>
     </inputs>
     <outputs>
+         <data name="out" format="tablecsv" label="CSV table" />
     </outputs>>
     <help><![CDATA[
         https://github.com/MouseLand/cellpose

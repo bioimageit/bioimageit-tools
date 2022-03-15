@@ -8,7 +8,6 @@ from os import listdir
 from os.path import isfile, join
 from skimage import io
 from skimage.morphology import disk
-from plantcv import plantcv as pcv
 from skimage.draw import ellipse
 from skimage.measure import label, regionprops, regionprops_table
 from skimage.transform import rotate
@@ -41,7 +40,7 @@ parser.add_argument('--original', type = argparse.FileType('r'), help = 'origina
 parser.add_argument('--label', type = argparse.FileType('r'), help = 'label image, from cellpose for instance')
 parser.add_argument('--pixel', type = int, help = 'size of the pixel erosion')
 parser.add_argument('--binary_map', required=True, default='False', type=str, help='If no labels in your black & white image')
-parser.add_argument('--csv', type = argparse.FileType('r'))
+parser.add_argument('--out', type = str)
 args = parser.parse_args()
 
 print("original & label in the command line")
@@ -76,13 +75,6 @@ print("Label image dirname : {}".format(label_dirname))
 
 print("Original & label selected")
 
-
-# Paths
-user_path = str(Path.home())
-bioimageit_path = os.path.join(user_path, "BioImageIT")
-workspace = os.path.join(bioimageit_path, "workspace")
-
-
 print("\n")
 
 ###########################################################
@@ -107,8 +99,7 @@ table = pd.DataFrame(props)
 print(table.head())
 
 
-os.chdir(workspace)
-table.to_csv("LabelsMeasure.csv")
+table.to_csv(args.out)
 print("Table saved in Workspace directory as LabelsMeasure.csv")
 
 print("\n")
