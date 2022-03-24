@@ -1,7 +1,28 @@
+import os
+import numpy as np
 import argparse
 from skimage.io import imread
 from stracking.detectors import DoGDetector
 from stracking.io import write_particles
+
+
+def read_txt_movie_list(path):
+    # Opening file
+    file1 = open(path, 'r')
+    frames = []
+    for line in file1:
+        frames.append(line.strip())
+    file1.close()   
+    return frames 
+
+
+def read_movie_txt(path):
+    parent_dir = os.path.dirname(path)
+    frames = read_txt_movie_list(path)
+    X_data = []
+    for frame in frames:
+        X_data.append(imread(os.path.join(parent_dir, frame)))
+    return np.array(X_data)
 
 
 def main():
@@ -26,10 +47,9 @@ def main():
     threshold = float(args.threshold)
     ratio = float(args.ratio)
     overlap = float(args.overlap)
-    log_scale = args.log_scale
     
     detector = DoGDetector(min_sigma = min_sigma, max_sigma = max_sigma, sigma_ratio = ratio, threshold = threshold, overlap = overlap)
-    out = detector.run(imread(input_))
+    out = detector.run(read_movie_txt(input_))
     write_particles(output, out)
     
 

@@ -1,6 +1,6 @@
 <tool id="stracking_detection" name="stracking-detection DoG" version="0.1.5" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="stracking">python=3.9 pip install stracking=0.1.5</package>
+        <package type="conda" env="stracking" init="pip install stracking==0.1.5">python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__stracking_DoG.py' -i ${i} -o ${o} -mi ${mi} -ma ${ma} -t ${t} -r ${r} -ov ${ov} 
@@ -14,7 +14,7 @@
 		<param argument="-ov" type="float" value="0.5" label="Overlap" help="Overlap"  optional="true"/>
     </inputs>
     <outputs>
-        <data name="o" format="movietxt" label="Output image" />
+        <data name="o" format="tablecsv" label="Output particles" />
     </outputs>
     <help><![CDATA[
         https://github.com/sylvainprigent/stracking
