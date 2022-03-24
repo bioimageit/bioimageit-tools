@@ -28,10 +28,10 @@ parser.add_argument('--out', type = str)
 args = parser.parse_args()
 print("\n")
 
-# prints a list of available models 
-print("Available models : ")
-StarDist2D.from_pretrained() 
-print("\n")
+# # prints a list of available models 
+# print("Available models : ")
+# StarDist2D.from_pretrained() 
+# print("\n")
 
 # creates a pretrained model
 model = StarDist2D.from_pretrained(args.model)
