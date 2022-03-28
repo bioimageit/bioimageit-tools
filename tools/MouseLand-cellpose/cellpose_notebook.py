@@ -133,7 +133,7 @@ channels = [chan]
 # >>> io.save_to_png(imgs, masks, flows, files)
 
 # or in a loop
-print("Saving seg and tif...")
+print("Executing cellpose, saving seg and tif...")
 for chan, filename in zip(channels, files):
     img = io.imread(filename)
     masks, flows, styles, diams = model.eval(img, diameter = diam, channels = chan)
@@ -147,7 +147,7 @@ for chan, filename in zip(channels, files):
 
 
 os.chdir(workspace)
-out_img_list = glob.glob('*_cp_masks.tif')
+out_img_list = glob.glob('out_cp_masks.tif')
 out_img_list = str(out_img_list)
 out_img_list = out_img_list.replace("['","")
 out_img_list_2 = out_img_list.replace("']","")
