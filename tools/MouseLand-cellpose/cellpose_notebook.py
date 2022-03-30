@@ -147,19 +147,21 @@ for chan, filename in zip(channels, files):
 
 
 os.chdir(workspace)
-out_img_list = glob.glob('out_cp_masks.tif')
-out_img_list = str(out_img_list)
-out_img_list = out_img_list.replace("['","")
-out_img_list_2 = out_img_list.replace("']","")
-out_img_list = out_img_list_2.replace("_cp_masks.tif", ".tif")
-print(out_img_list)
+# out_img_list = glob.glob('out_cp_masks.tif')
+# out_img_list = str(out_img_list)
+# out_img_list = out_img_list.replace("['","")
+# out_img_list_2 = out_img_list.replace("']","")
+# out_img_list = out_img_list_2.replace("_cp_masks.tif", ".tif")
+# print(out_img_list)
 
-out_img_1 = os.path.join(workspace, out_img_list_2)
-out_img_2 = os.path.join(workspace, out_img_list)
-print(out_img_1)
-print(out_img_2)
+out_img_1 = args.out.replace(".tif", "_cp_masks.tif")
+# out_img_1 = os.path.join(workspace, out_img_list_2)
+# out_img_2 = os.path.join(workspace, out_img_list)
+# print(out_img_1)
+# print(out_img_2)
 
-os.rename(out_img_1, out_img_2)
+os.rename(out_img_1, args.out)
 
+shutil.rmtree("cellpose_temp")
 
 print("JOB DONE !")
