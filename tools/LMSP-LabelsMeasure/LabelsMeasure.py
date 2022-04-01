@@ -30,10 +30,10 @@ print("Done")
 print("\n")
 
 ###########################################################
-####################  Before we begin #####################
+##########################  I/O ###########################
 ###########################################################
 
-print("########## BEFORE WE BEGIN ##########")
+print("########## I/O ##########")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--original', type = argparse.FileType('r'), help = 'original image')
@@ -94,15 +94,13 @@ print("\n")
 
 print("########## saveTable ##########")
 
-props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max'))
+props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid', 'eccentricity'))
 table = pd.DataFrame(props)
 print(table.head())
 
 
 table.to_csv(args.out)
-print("Table saved in Workspace directory as LabelsMeasure.csv")
-
-print("\n")
+print("Table saved as {}".format(args.out))
 
 
 
