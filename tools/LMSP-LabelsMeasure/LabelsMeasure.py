@@ -6,12 +6,13 @@ from datetime import time, tzinfo
 from tempfile import NamedTemporaryFile
 from os import listdir
 from os.path import isfile, join
-from skimage import io
+from skimage import io, data, util
 from skimage.morphology import disk
 from skimage.draw import ellipse
 from skimage.measure import label, regionprops, regionprops_table
 from skimage.transform import rotate
 from pathlib import Path
+from scipy.stats import skew
 
 import numpy as np
 import skimage
@@ -86,6 +87,14 @@ print("########## Work on regions ##########")
 regions = regionprops(label_img)
 print("Regions created")
 
+
+def sd_intensity(regionmask, intensity_image):
+    return np.std(intensity_image[regionmask])
+
+def skew_intensity(regionmask, intensity_image):
+    return skew(intensity_image[regionmask])
+
+
 print("\n")
 
 ###########################################################
@@ -94,7 +103,8 @@ print("\n")
 
 print("########## saveTable ##########")
 
-props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid', 'eccentricity'))
+props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid', 'eccentricity'), 
+    extra_properties=(sd_intensity, skew_intensity))
 table = pd.DataFrame(props)
 print(table.head())
 
