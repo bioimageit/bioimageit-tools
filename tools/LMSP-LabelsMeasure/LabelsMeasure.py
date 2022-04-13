@@ -12,7 +12,7 @@ from skimage.draw import ellipse
 from skimage.measure import label, regionprops, regionprops_table
 from skimage.transform import rotate
 from pathlib import Path
-from scipy.stats import skew
+from scipy.stats import skew, kurtosis
 
 import numpy as np
 import skimage
@@ -88,12 +88,15 @@ regions = regionprops(label_img)
 print("Regions created")
 
 
-def sd_intensity(regionmask, intensity_image):
+def stdDev(regionmask, intensity_image):
     return np.std(intensity_image[regionmask])
 
-def skew_intensity(regionmask, intensity_image):
+def skewness(regionmask, intensity_image):
     return skew(intensity_image[regionmask])
 
+
+def kurt(regionmask, intensity_image):
+    return kurtosis(intensity_image[regionmask], fisher = True)
 
 print("\n")
 
@@ -103,8 +106,8 @@ print("\n")
 
 print("########## saveTable ##########")
 
-props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid', 'eccentricity'), 
-    extra_properties=(sd_intensity, skew_intensity))
+props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid'), 
+    extra_properties=(stdDev, skewness, kurt))
 table = pd.DataFrame(props)
 print(table.head())
 
