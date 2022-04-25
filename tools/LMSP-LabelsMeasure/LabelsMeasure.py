@@ -98,6 +98,9 @@ def skewness(regionmask, intensity_image):
 def kurt(regionmask, intensity_image):
     return kurtosis(intensity_image[regionmask], fisher = True)
 
+def center_mass(intensity_image):
+    return regions[0].centroid
+
 print("\n")
 
 ###########################################################
@@ -107,7 +110,7 @@ print("\n")
 print("########## saveTable ##########")
 
 props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid'), 
-    extra_properties=(stdDev, skewness, kurt))
+    extra_properties=(stdDev, skewness, kurt, center_mass))
 table = pd.DataFrame(props)
 print(table.head())
 
