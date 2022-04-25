@@ -109,7 +109,7 @@ print("\n")
 
 print("########## saveTable ##########")
 
-props = regionprops_table(label_img, original_img, properties=('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid'), 
+props = regionprops_table(label_img, original_img, properties = ('area', 'intensity_mean', 'intensity_min', 'intensity_max', 'perimeter', 'centroid', 'bbox', 'feret_diameter_max', 'slice'), 
     extra_properties=(stdDev, skewness, kurt, center_mass))
 table = pd.DataFrame(props)
 print(table.head())
