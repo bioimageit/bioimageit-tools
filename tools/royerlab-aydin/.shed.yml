@@ -1,0 +1,5 @@
+categories: [Denoising]
+description: image denoising tool
+homepage_url: https://royerlab.github.io/aydin/
+long_description: image denoising tool that provides a number of self-supervised, auto-tuned, and unsupervised image denoising algorithms
+owner: royerlab

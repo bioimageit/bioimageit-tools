@@ -1,0 +1,18 @@
+<tool id="aydin" name="Aydin" version="0.1.13" python_template_version="3.9">
+    <requirements>
+        <package type="conda" env="aydin_env" init="pip install aydin">python=3.9 cudatoolkit</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__cli.py' denoise ${i} --out ${out} 
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output image" />
+    </outputs>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
