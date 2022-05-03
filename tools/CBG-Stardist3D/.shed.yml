@@ -1,0 +1,6 @@
+categories: [Segmentation]
+description: StarDist3D
+homepage_url: https://stardist.net/
+long_description: Object Detection with Star-convex Shapes 
+name: stardist
+owner: Uwe Schmidt and Martin Weigert and Coleman Broaddus and Gene Myers
