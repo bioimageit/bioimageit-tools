@@ -12,6 +12,7 @@ from skimage.metrics import peak_signal_noise_ratio
 from skimage.metrics import structural_similarity
 
 from aydin.io.datasets import normalise
+from aydin.restoration.deconvolve.lr import LucyRichardson
 from aydin.it.base import ImageTranslatorBase
 from aydin.io.io import imwrite, imread
 from aydin.io.utils import get_output_image_path, get_save_model_path
@@ -26,87 +27,64 @@ print("\n")
 
 print("########## PARAMETERS ##########")
 
-# AYDIN denoised parameters
+# AYDIN deconv parameters
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--infile', type = argparse.FileType('r'), help = 'Aydin parameters')
-parser.add_argument('--training-slicing', type = str, default = "")
-parser.add_argument('--inference-slicing', type = str, default = '')
-parser.add_argument('--batch-axes', type=str, help='only pass while denoising a single image')
-parser.add_argument('--channel-axes', type=str, help='only pass while denoising a single image')
-parser.add_argument('--variant', default='noise2selffgr-cb', type=str)
-parser.add_argument('--out', help = 'denoised tif image')
+parser.add_argument('--psf', type = argparse.FileType('r'), help = 'PSF image')
+parser.add_argument('--slicing', type = str, default = "")
+parser.add_argument('--backend', default=None, help='')
+parser.add_argument('--out', help = 'deconvolved tif image')
 
 args = parser.parse_args()
+
+
+input_file_path = imread(args.infile.name)[0]
+psf_path = args.psf.name
+args_slicing = None
+args_backend = None
+
+if args.slicing == "${slicing}":
+    args_slicing = None
+if args.backend == "${backend}":
+    args_backend = None
+
 
 print("Done")
 print("\n")
 
-input_file_path = args.infile.name
 
 
-args_training_slicing = ""
-args_inference_slicing = ''
-if args.batch_axes == "${batch-axes}":
-    args_batch_axes = None
-if args.channel_axes == "${channel-axes}":
-    args_channel_axes = None
+print("########## DECONVOLUTION ##########")
 
+def lucyrichardson(files, psf_path):
+    """lucyrichardson command
 
-print("########## DENOISING ##########")
+    Parameters
+    ----------
+    files
+    psf_kernel
 
-def denoise(files):
-    """
-    denoise command
     """
 
-    lower_level_args = None
-    backend = args.variant
+    psf_kernel = imread(psf_path)[0]
+    psf_kernel = psf_kernel.astype(numpy.float32, copy=False)
+    psf_kernel /= psf_kernel.sum()
 
-    path = os.path.abspath(files)
-    noisy, noisy_metadata = imread(path)
-
-    noisy2train = apply_slicing(noisy, args_training_slicing)
-    noisy2infer = apply_slicing(noisy, args_inference_slicing)
-
-    if args.batch_axes is not None and len(files) == 1:
-        noisy_metadata.batch_axes = ast.literal_eval(args_batch_axes)
-
-    if args.channel_axes is not None and len(files) == 1:
-        noisy_metadata.channel_axes = ast.literal_eval(args_channel_axes)
-
-    output_path = args.out
-
-    denoiser = get_denoiser_class_instance(
-        lower_level_args=lower_level_args, variant=backend
+    lr = LucyRichardson(
+        psf_kernel=psf_kernel, max_num_iterations=20, backend=args_backend
     )
 
-    denoiser.train(
-        noisy2train,
-        batch_axes=noisy_metadata.batch_axes
-        if noisy_metadata is not None
-        else None,
-        chan_axes=noisy_metadata.channel_axes
-        if noisy_metadata is not None
-        else None,
-        image_path=path,
-    )
+    lr.train(files, files)
+    deconvolved = lr.deconvolve(files)
 
-    denoised = denoiser.denoise(
-        noisy2infer,
-        batch_axes=noisy_metadata.batch_axes
-        if noisy_metadata is not None
-        else None,
-        chan_axes=noisy_metadata.channel_axes
-        if noisy_metadata is not None
-        else None,
-    )
-
-    imwrite(denoised, output_path)
-    lprint("DONE")
+    path = args.out
+        
+    imwrite(deconvolved, path)
 
 
 
-denoise(input_file_path)
+
+lucyrichardson(input_file_path, psf_path)
 
 print("Done")
