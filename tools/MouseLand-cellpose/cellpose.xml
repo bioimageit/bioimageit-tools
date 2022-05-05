@@ -11,6 +11,18 @@
             <option value="cyto">Cyto</option>
             <option value="cyto2">Cyto2</option>
             <option value="nuclei">Nuclei</option>
+            <option value="nuclei">Nuclei</option>
+            <option value="tissuenet">Tissuenet</option>
+            <option value="livecell">Livecell</option>
+            <option value="CP">CP</option>
+            <option value="CPx">CPx</option>
+            <option value="TN1">TN1</option>
+            <option value="TN2">TN2</option>
+            <option value="TN3">TN3</option>
+            <option value="LC1">LC1</option>
+            <option value="LC2">LC2</option>
+            <option value="LC3">LC3</option>
+            <option value="LC4">LC4</option>
         </param>
         <param argument="--use_gpu" type="select" label="Use GPU" help="Use Nvidia GPU cuda cores or not for traning">
             <option value="True">Use GPU</option>
