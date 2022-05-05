@@ -1,6 +1,0 @@
-categories: [Segmentation]
-description: Robut - Cellpose 3D
-homepage_url: https://github.com/stegmaierj/Cellpose3D
-long_description: This repository contains code used for the 3D Cellpose approach proposed in Preprint, which is an extension of the approach proposed by Stringer et al.. 
-name: Robut - Cellpose 3D
-owner: Stegmaierj
