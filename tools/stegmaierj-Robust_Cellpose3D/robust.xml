@@ -1,6 +1,6 @@
 <tool id="robust" name="Robust-Cellpose3D" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="cellpose" init="pip install torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html">cellpose python=3.8 robust-cellpose3d</package>
+        <package type="conda" env="cellpose" init="pip install pytorch_lightning torchvision torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html">cellpose python=3.8 cellpose3d_py h5py scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__robust.py' --infile ${i} --mask ${mask} --out ${out}
