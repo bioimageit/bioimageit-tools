@@ -1,0 +1,28 @@
+<tool id="clesperanto_count" name="Clesperanto Voronoi" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_voronoi.py' --infile ${i} --sigma_spot_detection ${sigma_spot_detection} --sigma_outline ${sigma_outline} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="float" name="sigma_spot_detection" value="0" label="Sigma spot detection" help="sigma_spot_detection" />
+        <param type="float" name="sigma_outline" value="0" label="sigma_outline" help="sigma_outline" />
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output mask" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="IXMtest_A02_s9.tif" />
+            <param name="sigma_spot_detection" value="5" />
+            <output name="sigma_outline" file="1" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
