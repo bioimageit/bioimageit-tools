@@ -1,0 +1,28 @@
+<tool id="clesperanto_count" name="clesperanto_count" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_count.py' --infile ${i} --sigma_x ${sigma_x} --sigma_y ${sigma_y} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="float" name="sigma_x" value="0" label="Sigma X" help="Sigma X for guassian blur" />
+        <param type="float" name="sigma_y" value="0" label="Sigma Y" help="Sigma Y for guassian blur" />
+    </inputs>
+    <outputs>
+        <data name="out" format="numbercsv" label="Output number" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="segmentation.tif" />
+            <param name="sigma_x" value="1" />
+            <output name="sigma_y" file="1" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

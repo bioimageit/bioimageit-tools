@@ -1,0 +1,6 @@
+categories: [Spots detection]
+description: Clesperanto Count
+homepage_url: https://github.com/clEsperanto/pyclesperanto_prototype
+long_description: py-clesperanto is a prototype for clesperanto - a multi-platform multi-language framework for GPU-accelerated image processing 
+name: Clesperanto Count
+owner: Robert Haase
