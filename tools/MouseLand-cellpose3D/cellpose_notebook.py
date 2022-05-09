@@ -173,7 +173,7 @@ print("########## RUN CELLPOSE ##########")
 masks, flows, styles = model.eval(images, 
     diameter = diam, 
     channels = chan, 
-    # do_3D = do_3D
+    do_3D = do_3D
     )
 
 print("Done")
