@@ -1,0 +1,40 @@
+<tool id="clesperanto_3D_seg" name="Clesperanto 3D Segmentation" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_3D_seg.py' --infile ${i} --sigma_spot_detection ${sigma_spot_detection} --sigma_outline ${sigma_outline} --voxel_size_x ${voxel_size_x} --voxel_size_y ${voxel_size_y} --voxel_size_z ${voxel_size_z} --radius_x ${radius_x} --radius_y ${radius_y} --radius_z ${radius_z} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="float" name="sigma_spot_detection" value="3" label="Sigma spot detection" help="sigma_spot_detection" />
+        <param type="float" name="sigma_outline" value="1" label="sigma_outline" help="sigma_outline" />
+        <param type="float" name="voxel_size_x" value="0.202" label="Voxel size X" help="voxel_size_x" />
+        <param type="float" name="voxel_size_y" value="0.202" label="Voxel size Y" help="voxel_size_y" />
+        <param type="float" name="voxel_size_z" value="1" label="Voxel size Z" help="voxel_size_z" />
+        <param type="float" name="radius_x" value="5" label="Radius X" help="radius_x" />
+        <param type="float" name="radius_y" value="5" label="Radius Y" help="radius_y" />
+        <param type="float" name="radius_z" value="5" label="Radius Y" help="radius_z" />
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output mask" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="IXMtest_A02_s9.tif" />
+            <param name="sigma_spot_detection" value="3" />
+            <param name="voxel_size_x" value="0.202" />
+            <param name="voxel_size_y" value="0.202" />
+            <param name="voxel_size_z" value="1" />
+            <param name="radius_x" value="5" />
+            <param name="radius_y" value="5" />
+            <param name="radius_z" value="5" />
+            <output name="sigma_outline" file="1" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

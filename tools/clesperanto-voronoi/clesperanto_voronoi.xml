@@ -7,8 +7,8 @@
     ]]></command>
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
-        <param type="float" name="sigma_spot_detection" value="0" label="Sigma spot detection" help="sigma_spot_detection" />
-        <param type="float" name="sigma_outline" value="0" label="sigma_outline" help="sigma_outline" />
+        <param type="float" name="sigma_spot_detection" value="5" label="Sigma spot detection" help="sigma_spot_detection" />
+        <param type="float" name="sigma_outline" value="1" label="sigma_outline" help="sigma_outline" />
     </inputs>
     <outputs>
         <data name="out" format="imagetiff" label="Output mask" /> 

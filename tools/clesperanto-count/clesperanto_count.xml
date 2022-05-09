@@ -1,4 +1,4 @@
-<tool id="clesperanto_count" name="Clesperanto Count" version="1.0.0" python_template_version="3.5">
+<tool id="clesperanto_count" name="clesperanto_count" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
     </requirements>
