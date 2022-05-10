@@ -1,6 +1,6 @@
 <tool id="aydin" name="Aydin" version="0.1.13" python_template_version="3.9">
     <requirements>
-        <package type="conda" env="aydin" init="pip install aydin">python=3.9 cudatoolkit pytorch</package>
+        <package type="conda" env="aydin" init="pip install aydin">python=3.9 cudatoolkit</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__cli.py' --infile ${i} --batch-axes ${batch-axes} --channel-axes ${channel-axes} --variant ${variant} --out ${out_denoised} 
