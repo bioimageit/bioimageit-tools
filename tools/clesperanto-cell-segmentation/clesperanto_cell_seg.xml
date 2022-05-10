@@ -1,0 +1,33 @@
+<tool id="clesperanto_cell_seg" name="Clesperanto Cell Segmentation" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_cell_seg.py' --infile ${i} --radius_x ${radius_x} --radius_y ${radius_y} --corrected_binary ${corrected_binary} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="select" argument="--corrected_binary" label="Corrected binary" help="Usefull when non corrected is not good, to improve segmentation">
+            <option value="False">False</option>
+            <option value="True">True</option>
+        </param>
+        <param type="float" name="radius_x" value="10" label="Radius X" help="radius_x when corrected_binary is True" />
+        <param type="float" name="radius_y" value="10" label="Radius Y" help="radius_y when corrected_binary is True" />
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output mask" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="AICS_12_134_C=0.tif" />
+            <param name="radius_x" value="10" />
+            <param name="radius_y" value="10" />
+            <param name="corrected_binary" value="True" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
