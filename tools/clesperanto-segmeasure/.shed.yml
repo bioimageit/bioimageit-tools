@@ -1,0 +1,6 @@
+categories: [Segmentation]
+description: Bead segmentation and measurements
+homepage_url: https://github.com/clEsperanto/pyclesperanto_prototype
+long_description: Detect hot spots / local maxima / beads in an image and how to measure their FWHM. To make the algorithm work, the beads should be sufficiently sparse. 
+name: Clesperanto Seg-measure
+owner: Robert Haase
