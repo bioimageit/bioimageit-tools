@@ -1,0 +1,26 @@
+<tool id="clesperanto_nuclei" name="Clesperanto Count with Channels" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_count.py' --infile ${i} --spot_sigma ${spot_sigma} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="float" name="spot_sigma" value="20" label="Spot sigma" help="Spot sigma" />
+    </inputs>
+    <outputs>
+        <data name="out" format="numbercsv" label="Output csv" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="test.png" />
+            <param name="spot_sigma" value="20" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
