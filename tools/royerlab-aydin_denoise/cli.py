@@ -63,47 +63,56 @@ def denoise(files):
     lower_level_args = None
     backend = args.variant
 
-    path = os.path.abspath(files)
-    noisy, noisy_metadata = imread(path)
+    filenames = []
 
-    noisy2train = apply_slicing(noisy, args_training_slicing)
-    noisy2infer = apply_slicing(noisy, args_inference_slicing)
+    for filename in files:
+        # if our shell does not do filename globbing
+        expanded = list(glob(filename))
 
-    if args.batch_axes is not None and len(files) == 1:
-        noisy_metadata.batch_axes = ast.literal_eval(args_batch_axes)
+        filenames.extend(expanded)
 
-    if args.channel_axes is not None and len(files) == 1:
-        noisy_metadata.channel_axes = ast.literal_eval(args_channel_axes)
+    for filename in filenames:
+        path = os.path.abspath(files)
+        noisy, noisy_metadata = imread(path)
 
-    output_path = args.out
+        noisy2train = apply_slicing(noisy, args_training_slicing)
+        noisy2infer = apply_slicing(noisy, args_inference_slicing)
 
-    denoiser = get_denoiser_class_instance(
-        lower_level_args=lower_level_args, variant=backend
-    )
+        if args.batch_axes is not None and len(files) == 1:
+            noisy_metadata.batch_axes = ast.literal_eval(args_batch_axes)
 
-    denoiser.train(
-        noisy2train,
-        batch_axes=noisy_metadata.batch_axes
-        if noisy_metadata is not None
-        else None,
-        chan_axes=noisy_metadata.channel_axes
-        if noisy_metadata is not None
-        else None,
-        image_path=path,
-    )
+        if args.channel_axes is not None and len(files) == 1:
+            noisy_metadata.channel_axes = ast.literal_eval(args_channel_axes)
 
-    denoised = denoiser.denoise(
-        noisy2infer,
-        batch_axes=noisy_metadata.batch_axes
-        if noisy_metadata is not None
-        else None,
-        chan_axes=noisy_metadata.channel_axes
-        if noisy_metadata is not None
-        else None,
-    )
+        output_path = args.out
 
-    imwrite(denoised, output_path)
-    lprint("DONE")
+        denoiser = get_denoiser_class_instance(
+            lower_level_args=lower_level_args, variant=backend
+        )
+
+        denoiser.train(
+            noisy2train,
+            batch_axes=noisy_metadata.batch_axes
+            if noisy_metadata is not None
+            else None,
+            chan_axes=noisy_metadata.channel_axes
+            if noisy_metadata is not None
+            else None,
+            image_path=path,
+        )
+
+        denoised = denoiser.denoise(
+            noisy2infer,
+            batch_axes=noisy_metadata.batch_axes
+            if noisy_metadata is not None
+            else None,
+            chan_axes=noisy_metadata.channel_axes
+            if noisy_metadata is not None
+            else None,
+        )
+
+        imwrite(denoised, output_path)
+        lprint("DONE")
 
 
 
