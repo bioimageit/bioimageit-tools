@@ -7,8 +7,8 @@
     ]]></command>
     <inputs>
         <param type="data" name="i" format="movietxt" label="Input Image" help="image" />
-        <param argument="-mi" type="float" value="1" label="Minimal sigma value" help="Minimal sigma value" />
-		<param argument="-ma" type="float" value="5" label="Maximal sigma value" help="Maximal sigma value" />
+        <param argument="-mi" type="float" value="3" label="Minimal sigma value" help="Minimal sigma value" />
+		<param argument="-ma" type="float" value="4" label="Maximal sigma value" help="Maximal sigma value" />
         <param argument="-r" type="float" value="1.6" label="Sigma ratio" help="Sigma ratio"  optional="true"/>
         <param argument="-t" type="float" value="0.2" label="Threshold" help="Threshold" />
 		<param argument="-ov" type="float" value="0.5" label="Overlap" help="Overlap"  optional="true"/>
@@ -16,6 +16,16 @@
     <outputs>
         <data name="o" format="tablecsv" label="Output particles" />
     </outputs>
+    <tests>
+        <test>
+            <param name="i" value="stracking.txt" />
+            <param name="mi" value="3" />
+            <param name="ma" value="4" />
+            <param name="r" value="1.6" />
+            <param name="t" value="0.2" />
+            <param name="ov" value="0.5" />
+        </test>
+    </tests>
     <help><![CDATA[
         https://github.com/sylvainprigent/stracking
     ]]></help>
