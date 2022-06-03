@@ -1,0 +1,28 @@
+<tool id="clesperanto_beads" name="Clesperanto Beads Seg and Measure" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl pandas python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_beads.py' --infile ${i} --sigma ${sigma} --scalar ${scalar} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="float" name="sigma" value="3" label="Sigma" help="sigma" />
+        <param type="float" name="scalar" value="0.5" label="scalar" help="Scalar for thresholds" />
+    </inputs>
+    <outputs>
+        <data name="out" format="tablecsv" label="Output mask" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="beads.tif" />
+            <param name="sigma" value="3" />
+            <param name="scalar" value="0.5" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

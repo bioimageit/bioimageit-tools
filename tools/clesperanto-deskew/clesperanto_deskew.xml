@@ -1,0 +1,32 @@
+<tool id="clesperanto_deskew" name="Clesperanto Deskew" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__clesperanto_deskew.py' --infile ${i} --angle ${angle} --voxel_size_x ${voxel_size_x} --voxel_size_y ${voxel_size_y} --voxel_size_z ${voxel_size_z} --out ${out}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param type="float" name="angle" value="30" label="Deskewing angle" help="Deskewing angle in degrees" />
+        <param type="float" name="voxel_size_x" value="0.202" label="Voxel size X" help="voxel_size_x" />
+        <param type="float" name="voxel_size_y" value="0.202" label="Voxel size Y" help="voxel_size_y" />
+        <param type="float" name="voxel_size_z" value="1" label="Voxel size Z" help="voxel_size_z" />
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output mask" /> 
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="deskew.tif" />
+            <param name="angle" value="30" />
+            <param name="voxel_size_x" value="0.1449922" />
+            <param name="voxel_size_y" value="0.1449922" />
+            <param name="voxel_size_z" value="0.3" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        https://github.com/clEsperanto/pyclesperanto_prototype
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
