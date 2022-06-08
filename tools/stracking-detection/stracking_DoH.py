@@ -51,7 +51,7 @@ def main():
     log_scale = args.log_scale
     
     detector = DoHDetector(min_sigma = min_sigma, max_sigma = max_sigma, num_sigma = num_sigma, threshold = threshold, overlap = overlap, log_scale = log_scale)
-    out = detector.run(imread(input_))
+    out = detector.run(read_movie_txt(input_))
     write_particles(output, out)
 
 
