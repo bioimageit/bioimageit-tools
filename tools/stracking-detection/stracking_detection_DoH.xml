@@ -17,6 +17,17 @@
     <outputs>
         <data name="o" format="tablecsv" label="Output image" />
     </outputs>
+    <tests>
+        <test>
+            <param name="i" value="stracking.txt" />
+            <param name="mi" value="3" />
+            <param name="ma" value="4" />
+            <param name="n" value="2" />
+            <param name="t" value="0.2" />
+            <param name="ov" value="0.5" />
+            <param name="l" value="2" />
+        </test>
+    </tests>
     <help><![CDATA[
         https://github.com/sylvainprigent/stracking
     ]]></help>
