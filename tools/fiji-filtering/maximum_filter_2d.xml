@@ -1,4 +1,4 @@
-<tool id="maximum-filter-2d" name="fiji maximum filter 2d" version="1.0.0" python_template_version="3.5">
+<tool id="maximum_filter_2d" name="fiji maximum filter 2d" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="maximum-filter-2d">python</package>
     </requirements>

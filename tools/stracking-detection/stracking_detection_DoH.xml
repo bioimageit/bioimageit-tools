@@ -1,4 +1,4 @@
-<tool id="stracking_detection" name="stracking-detection DoH" version="0.1.2" python_template_version="3.5">
+<tool id="stracking_detection_DoH" name="stracking-detection DoH" version="0.1.2" python_template_version="3.5">
     <requirements>
         <package type="conda" env="stracking" init="pip install stracking==0.1.5">python=3.9</package>
     </requirements>

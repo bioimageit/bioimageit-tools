@@ -1,4 +1,4 @@
-<tool id="variance-filter-3d" name="fiji variance filter 3d" version="1.0.0" python_template_version="3.5">
+<tool id="variance_filter_3d" name="fiji variance filter 3d" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="variance-filter-3d">python</package>
     </requirements>

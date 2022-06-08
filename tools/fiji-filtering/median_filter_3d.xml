@@ -1,4 +1,4 @@
-<tool id="median-filter-3d" name="fiji median filter 3d" version="1.0.0" python_template_version="3.5">
+<tool id="median_filter_3d" name="fiji median filter 3d" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda">python</package>
     </requirements>

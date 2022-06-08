@@ -1,4 +1,4 @@
-<tool id="matirflocalize" name="MATIRF localize" version="1.0.0" python_template_version="3.5">
+<tool id="matirf_localize" name="MATIRF localize" version="1.0.0" python_template_version="3.5">
     <requirements>
         <container type="docker">registry.gitlab.inria.fr/serpico/matirf:48317336f8dca25e1f3ef0a96c71355bb50319d9</container>
     </requirements>

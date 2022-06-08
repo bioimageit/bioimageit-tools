@@ -1,4 +1,4 @@
-<tool id="image-calculator" name="fiji image calculator" version="1.0.0" python_template_version="3.5">
+<tool id="image_calculator" name="fiji image calculator" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="image_calculator">python</package>
     </requirements>

@@ -1,0 +1,52 @@
+<tool id="spitfiredeconv3d" name="SPITFIR(e) 3D" version="0.1.2" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9 </package>    
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        simgspitfiredeconv3d -i ${i} -o ${o} -psf ${psf} -regularization ${regularization} -weighting ${weighting} -method ${method} -padding ${padding} -niter 200
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="3D image" />
+        <param type="data" name="psf" format="imagetiff" label="PSF Image" help="3D image" />
+        <param argument="-regularization" type="float" value="15" label="Regularization" help="Regularization parameter pow(2,-x)" />
+        <param argument="-weighting" type="float" min="0.0" max="1.0" value="0.6" label="Weighting" help="Regularization parameter pow(2,-x)" />
+        <param argument="-method" value="HV" type="select" label="Method" >
+            <option value="HV">Hessian variation</option>
+            <option value="SV">Sparse variation</option>
+        </param>
+        <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
+            <option value="false">False</option>
+            <option value="true">True</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="o" format="imagetiff" label="Denoised image" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="i" value="celegans.tif" />
+            <param name="psf" value="psf.tif" />
+            <param name="regularization" value="11" />
+            <param name="weighting" value="0.6" />
+            <param name="method" value="HV" />
+            <output name="o" file="sv_result.tif" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
+       https://team.inria.fr/serpico/software/
+    ]]></help>
+    <citations>
+        <citation type="bibtex">@unpublished{nguyen:hal-01609810,
+            TITLE = {{Generalized Sparse Variation Regularization for Large Fluorescence Image Deconvolution}},
+            AUTHOR = {Nguyen, Hoa{\"i}-Nam and Paveau, Vincent and Cauchois, Cyril and Kervrann, Charles},
+            URL = {https://hal.inria.fr/hal-01609810},
+            NOTE = {working paper or preprint},
+            YEAR = {2017},
+            MONTH = Oct,
+            KEYWORDS = {Fluorescence imaging ; image deconvolution ; sparse variation ; convex optimization ; proximal algorithms},
+            PDF = {https://hal.inria.fr/hal-01609810/file/HAL-SVDeconv.pdf},
+            HAL_ID = {hal-01609810},
+            HAL_VERSION = {v1},
+        }</citation>
+    </citations>
+</tool>

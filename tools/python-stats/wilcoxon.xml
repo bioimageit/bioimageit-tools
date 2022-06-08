@@ -1,4 +1,4 @@
-<tool id="Wilcoxon" name="Wilcoxon" version="1.0.0" python_template_version="3.5" type="merge">
+<tool id="wilcoxon" name="Wilcoxon" version="1.0.0" python_template_version="3.5" type="merge">
     <requirements>
         <package type="conda" env="scipy">scipy python=3.9</package>
     </requirements>

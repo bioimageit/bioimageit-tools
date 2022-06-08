@@ -1,4 +1,4 @@
-<tool id="gaussian-blur-2d" name="fiji Gaussian blur 2D" version="1.0.0" python_template_version="3.5">
+<tool id="gaussian_blur_2d" name="fiji Gaussian blur 2D" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="gaussian-blur-2d">python</package>
     </requirements>

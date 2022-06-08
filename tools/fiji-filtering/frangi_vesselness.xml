@@ -1,4 +1,4 @@
-<tool id="frangi-vesselness" name="fiji Frangi Vesselness" version="1.0.0" python_template_version="3.5">
+<tool id="frangi_vesselness" name="fiji Frangi Vesselness" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="frangi-vesselness">python</package>
     </requirements>

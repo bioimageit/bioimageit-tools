@@ -1,4 +1,4 @@
-<tool id="fiji-invert" name="fiji invert" version="1.0.0" python_template_version="3.5">
+<tool id="invert" name="fiji invert" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda">fiji_invert</package>
     </requirements>

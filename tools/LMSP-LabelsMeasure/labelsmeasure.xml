@@ -1,4 +1,4 @@
-<tool id="LabelsMeasure" name="LabelsMeasure" version="1.0.0" python_template_version="3.5">
+<tool id="labelsmeasure" name="LabelsMeasure" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="LabelsMeasure">python scikit-image</package>
     </requirements>

@@ -1,4 +1,4 @@
-<tool id="CImgDenoisingBayesNLmeans" name="Denoising BayesNLmeans" version="1.0.0" python_template_version="3.5">
+<tool id="bayesnlmeans_denoising" name="Denoising BayesNLmeans" version="1.0.0" python_template_version="3.5">
     <requirements>
         <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
     </requirements>

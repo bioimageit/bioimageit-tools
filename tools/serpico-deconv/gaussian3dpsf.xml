@@ -1,4 +1,4 @@
-<tool id="simggaussian3dpsf" name="3D Gaussian PSF" version="0.1.2" python_template_version="3.5">
+<tool id="gaussian3dpsf" name="3D Gaussian PSF" version="0.1.2" python_template_version="3.5">
     <requirements>
         <package type="conda" env="simglib">-c sylvainprigent simglib=0.1.2 python=3.9</package>
     </requirements>

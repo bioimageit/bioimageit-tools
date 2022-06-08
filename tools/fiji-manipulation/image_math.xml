@@ -1,4 +1,4 @@
-<tool id="image-math" name="fiji image math" version="1.0.0" python_template_version="3.5">
+<tool id="image_math" name="fiji image math" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="image_math">python</package>
     </requirements>

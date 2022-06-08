@@ -1,4 +1,4 @@
-<tool id="fiji-stackreg" name="fiji stack reg" version="1.0.0" python_template_version="3.5">
+<tool id="stackreg" name="fiji stack reg" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="fiji-stackreg">python</package>
     </requirements>

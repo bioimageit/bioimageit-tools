@@ -1,4 +1,4 @@
-<tool id="mean-filter-3d" name="fiji mean filter 3d" version="1.0.0" python_template_version="3.5">
+<tool id="mean_filter_3d" name="fiji mean filter 3d" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="mean-filter-3d">python</package>
     </requirements>

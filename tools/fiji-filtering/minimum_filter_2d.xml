@@ -1,4 +1,4 @@
-<tool id="minimum-filter-2d" name="fiji minimum filter 2d" version="1.0.0" python_template_version="3.5">
+<tool id="minimum_filter_2d" name="fiji minimum filter 2d" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="minimum-filter-2d">python</package>
     </requirements>

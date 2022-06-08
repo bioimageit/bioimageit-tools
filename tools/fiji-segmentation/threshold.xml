@@ -1,4 +1,4 @@
-<tool id="fiji-threshold" name="fiji threshold" version="1.0.0" python_template_version="3.5">
+<tool id="threshold" name="fiji threshold" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="fiji-threshold">python</package>
     </requirements>

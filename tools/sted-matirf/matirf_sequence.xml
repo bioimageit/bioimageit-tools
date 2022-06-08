@@ -1,4 +1,4 @@
-<tool id="matirfsequence" name="MATIRF sequence" version="1.0.0" python_template_version="3.5">
+<tool id="matirf_sequence" name="MATIRF sequence" version="1.0.0" python_template_version="3.5">
     <requirements>
         <container type="docker">registry.gitlab.inria.fr/serpico/matirf:0ea86a4f15adb71762dfba6fbed082b37a3ca57f</container>
     </requirements>

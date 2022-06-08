@@ -1,4 +1,4 @@
-<tool id="CImgDenoisingBM3D" name="Denoising BM3D" version="1.0.0" python_template_version="3.5">
+<tool id="bm3d_denoising" name="Denoising BM3D" version="1.0.0" python_template_version="3.5">
     <requirements>
         <container type="docker">registry.gitlab.inria.fr/serpico/cimgdenoising:ddf864ae8888ef587dbb49e53efc3da3ae8f8736</container>
     </requirements>

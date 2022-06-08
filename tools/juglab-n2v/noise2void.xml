@@ -1,4 +1,4 @@
-<tool id="juglab-n2v" name="noise2void" version="0.2.1" python_template_version="3.5">
+<tool id="noise2void" name="noise2void" version="0.2.1" python_template_version="3.5">
     <requirements>
         <package type="conda" env="juglab-noise2void">juglab-noise2void tensorflow-gpu keras</package>
     </requirements>

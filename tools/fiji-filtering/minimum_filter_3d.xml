@@ -1,4 +1,4 @@
-<tool id="minimum-filter-3d" name="fiji minimum filter 3d" version="1.0.0" python_template_version="3.5">
+<tool id="minimum_filter_3d" name="fiji minimum filter 3d" version="1.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="minimum-filter-3d">python</package>
     </requirements>
