@@ -3,10 +3,10 @@
         <package type="conda" env="stracking">python=3.9 pip install stracking=0.1.5</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-       ssplinker -i ${i} -o ${o} -p ${p} -f st.json -c ${c} -g ${g} 
+       ssplinker -i ${i} -o ${o} -f st.json -c ${c} -g ${g} 
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="movietxt" label="Input image" help="image" />
+        <param type="data" name="i" format="tablecsv" label="Input csv" help="csv from a stracking detector" />
         <param argument="-c" type="float" value="3000" label="Maximum connection cost" help="This is the squared maximum Euclidean distance that a particle can move between two consecutive frames" />
         <param argument="-g" type="integer" value="2" label="Gap" help="For example if gap=2, particles 2 frames appart can be connected" />
     </inputs>
