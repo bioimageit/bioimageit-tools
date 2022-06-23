@@ -1,6 +1,0 @@
-categories: [Denoising]
-description: Noise2Void - Learning Denoising
-homepage_url: https://github.com/juglab/n2v/
-long_description: Noise2Void - Learning Denoising from Single Noisy Images
-name: n2v
-owner: juglab
