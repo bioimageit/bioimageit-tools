@@ -1,0 +1,28 @@
+<tool id="Noise2Self" name="Noise2Self" version="0.1" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="noise2self">python matplotlib noise2self -c pytorch torchvision</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__n2s.py' --infile ${i} --out ${out}  --num_of_layers ${n} --iterations ${x} --masker_width ${w} --model ${m}
+    ]]></command>
+    <inputs>
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
+        <param argument="--iterations" type="int" value="500" label="Iterations" help="Iterations" />
+        <param argument="--num_of_layers" type="int" value="8" label="Number of layers" help="Number of layers in the convolutional network" />
+        <param argument="--masker_width" type="int" value="4" label="Masker width" help="Masker width" />
+        <param argument="--model" type="select" label="Pretrained model" help="Model to use : BabyUnet, DnCNN, SingleConvolution or Unet">
+            <option value="BabyUnet">BabyUnet</option>
+            <option value="DnCNN">DnCNN</option>
+            <option value="SingleConvolution">SingleConvolution</option>
+            <option value="Unet">Unet</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output image" />
+    </outputs>
+    <help><![CDATA[
+        https://github.com/czbiohub/noise2self
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
