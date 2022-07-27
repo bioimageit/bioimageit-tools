@@ -8,11 +8,11 @@
     <inputs>
         <param type="data" name="i" format="imagetiff" label="Input Image" help="image" />
         <param argument="--iterations" type="integer" value="500" label="Iterations" help="Iterations" />
-        <param argument="--num_of_layers" type="integer" value="8" label="Number of layers" help="Number of layers in the convolutional network" />
+        <param argument="--num_of_layers" type="integer" value="8" label="Number of layers" help="Number of layers in the convolutional network. n = O if not model DnCNN" />
         <param argument="--masker_width" type="integer" value="4" label="Masker width" help="Masker width" />
         <param argument="--model" type="select" label="Pretrained model" help="Model to use : BabyUnet, DnCNN, SingleConvolution or Unet">
-            <option value="BabyUnet">BabyUnet</option>
             <option value="DnCNN">DnCNN</option>
+            <option value="BabyUnet">BabyUnet</option>
             <option value="SingleConvolution">SingleConvolution</option>
             <option value="Unet">Unet</option>
         </param>
