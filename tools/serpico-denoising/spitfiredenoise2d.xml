@@ -1,6 +1,6 @@
 <tool id="spitfiredenoise2d" name="SPITFIR(e) 2D" version="0.1.3" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="simglib">python=3.9 -c sylvainprigent simglib=0.1.3</package>
+        <package type="conda" env="simglib"> -c sylvainprigent python=3.9 simglib=0.1.2</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         simgspitfiredenoise2d -i ${i} -o ${o} -regularization ${regularization} -weighting ${weighting} -method ${method} -padding ${padding} -niter 200
