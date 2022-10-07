@@ -6,7 +6,7 @@
         simgspitfiredenoise4d -i ${i} -o ${o} -regularization ${regularization} -weighting ${weighting} -method ${method} -padding ${padding} -niter 200
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="movietxt" label="Input Image" help="2D image" />
+        <param type="data" name="i" format="movietxt" label="Input Image (your results may have problems if x and y axis are not equal)" help="2D image" />
         <param argument="-regularization" type="float" value="2" label="Regularization" help="Regularization parameter pow(2,-x)" />
         <param argument="-weighting" type="float" min="0.0" max="1.0" value="0.6" label="Weighting" help="Regularization parameter pow(2,-x)" optional="true" />
         <param argument="-method" value="HV" type="select" label="Method" optional="true" >
