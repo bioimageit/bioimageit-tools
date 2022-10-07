@@ -6,7 +6,7 @@
         simgspitfiredeconv2dslice -i ${i} -o ${o} -sigma ${sigma} -regularization ${regularization} -weighting ${weighting} -method ${method} -padding ${padding} -niter 200
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="imagetiff" label="Input Image" help="3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image (your results may have problems if x and y axis are not equal)" help="3D image" />
         <param argument="-sigma" type="float" value="1.5" label="Sigma" help="Gaussian PSF width" />
         <param argument="-regularization" type="float" value="12" label="Regularization" help="Regularization parameter pow(2,-x)" />
         <param argument="-weighting" type="float" min="0.0" max="1.0" value="0.6" label="Weighting" help="Regularization parameter pow(2,-x)" optional="true" />
