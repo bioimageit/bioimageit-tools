@@ -6,7 +6,7 @@
         simgrichardsonlucy3d -i ${i} -o ${o} -psf ${psf} -niter ${niter} -padding ${padding}
     ]]></command>
     <inputs>
-        <param type="data" name="i" format="imagetiff" label="Input Image" help="3D image" />
+        <param type="data" name="i" format="imagetiff" label="Input Image (your results may have problems if x and y axis are not even numbers)" help="3D image" />
         <param type="data" name="psf" format="imagetiff" label="PSF Image" help="3D image" />
          <param argument="-niter" type="integer" value="15" label="Niter" help="Number of iteration" />
         <param argument="-padding" type="select" label="Padding" help="Add a padding to process pixels in borders" optional="true">
