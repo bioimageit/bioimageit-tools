@@ -1,0 +1,8 @@
+categories:
+  - Denoising
+  - Filtering
+description: gnomon pipeline
+homepage_url: https://gnomon.gitlabpages.inria.fr/gnomon/
+long_description: Execute a gnomon pipeline in bioImageIt
+name: gnomon
+owner: mosaic

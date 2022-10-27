@@ -1,0 +1,109 @@
+{
+    "cellImageFromImage1": {
+        "description": "",
+        "inputs": {
+            "binaryImage": null,
+            "cellPoints": null,
+            "input": "imageReader1 -> image"
+        },
+        "metadata": {
+            "conda_channel": "gnomon",
+            "package": "gnomon-package-tissueimage"
+        },
+        "name": "cellImageFromImage1",
+        "outputs": [
+            "output"
+        ],
+        "parameters": {
+            "equalize": {
+                "decimals": 0,
+                "doc": "Whether to perform *adaptive histogram equalization* to image prior to any other step.",
+                "label": "Equalize",
+                "max": true,
+                "min": false,
+                "type": "dtkCoreParameterNumeric<bool>",
+                "value": true
+            },
+            "gaussian_sigma": {
+                "decimals": 2,
+                "doc": "Standard deviation of the Gaussian kernel used for the detection of seeds",
+                "label": "Gaussian sigma",
+                "max": 50,
+                "min": 0,
+                "type": "dtkCoreParameterNumeric<double>",
+                "value": 0.5
+            },
+            "h_min": {
+                "decimals": 0,
+                "doc": "High threshold of the H-transform for the detection of seeds",
+                "label": "H-min",
+                "max": 255,
+                "min": 0,
+                "type": "dtkCoreParameterNumeric<qlonglong>",
+                "value": 2
+            },
+            "volume_max": {
+                "decimals": 0,
+                "doc": "Volume threshold for the suppression of oversized cells (µm3)",
+                "label": "Volume max",
+                "max": 1000000,
+                "min": 0,
+                "type": "dtkCoreParameterNumeric<qlonglong>",
+                "value": 1000
+            },
+            "volume_min": {
+                "decimals": 0,
+                "doc": "Volume threshold for the suppression of undersized cells (µm3)",
+                "label": "Volume min",
+                "max": 1000000,
+                "min": 0,
+                "type": "dtkCoreParameterNumeric<qlonglong>",
+                "value": 0
+            }
+        },
+        "plugin_group": "cellImageFromImage",
+        "plugin_name": "seededWatershedSegmentationTimagetk",
+        "plugin_version": "0.3.1"
+    },
+    "cellImageWriter1": {
+        "description": "",
+        "inputs": {
+            "cellImage": "cellImageFromImage1 -> output"
+        },
+        "name": "cellImageWriter1",
+        "outputs": [
+        ],
+        "path": "p58_seg.inr.gz",
+        "plugin_group": "cellImageWriter",
+        "plugin_name": "cellImageWriterTissueImage",
+        "plugin_version": "0.3.1"
+    },
+    "description": "",
+    "fileFormatVersion": "0.0.1",
+    "gnomonVersion": "0.71.0",
+    "imageReader1": {
+        "description": "",
+        "inputs": {
+        },
+        "name": "imageReader1",
+        "outputs": [
+            "image"
+        ],
+        "path": "p58-t0_imgFus_down_interp_2x.inr.gz",
+        "plugin_group": "imageReader",
+        "plugin_name": "imageReaderTimagetk",
+        "plugin_version": "0.3.1"
+    },
+    "input": [
+        {
+            "imageReader1_path": "imageReader1 -> path"
+        }
+    ],
+    "name": "",
+    "output": [
+        {
+            "cellImageWriter1_path": "cellImageWriter1 -> path"
+        }
+    ],
+    "type": "pipeline"
+}
