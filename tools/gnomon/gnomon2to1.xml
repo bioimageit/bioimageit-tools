@@ -3,11 +3,13 @@
         <package type="conda" env="gnomon">-c gnomon -c mosaic -c morpheme -c dtk-forge6 -c conda-forge gnomon=0.72.0 python=3.9</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        gnomonPipelineRunner ${pipeline} --ios ${input},${i} --ios ${output},${o}
+        gnomonPipelineRunner ${pipeline} --ios ${input},${i} --ios ${input2},${i2} --ios ${output},${o}
     ]]></command>
     <inputs>
-        <param type="data" name="i" label="Input Image" format="filepath" help="image" />
+        <param type="data" name="i" label="Input Image" format="filepath" help="first image" />
         <param argument="-input" type="string" value="imageReader1_path" label="firstReader" help="first reader name passed to ios" />
+        <param type="data" name="i2" label="Input Image2" format="filepath" help="second image" />
+        <param argument="-input2" type="string" value="imageReader2_path" label="secondReader" help="second reader name passed to ios" />
         <param argument="-output" type="string" value="cellimageWriter1_path" label="firstWriter" help="first writer name passed to ios" />
         <param argument="-pipeline" type="string" value="" label="pipeline file" help="path to the json pipeline file to run" />
     </inputs>
@@ -16,8 +18,11 @@
     </outputs>
     <tests>
         <test>
+            <!-- TODO !   -->
             <param name="input" value="imageReader1" />
             <param name="i" value="p58-t0_imgFus_down_interp_2x.inr.gz" />
+            <param name="input2" value="imageReader1" />
+            <param name="i2" value="p58-t0_imgFus_down_interp_2x.inr.gz" />
             <param name="pipeline" value="segmentation_pipeline.json" />
             <param name="input" value="cellImageWriter1" />
             <output name="o" file="p58-t0_imgFus_down_interp_2x_o.inr.gz" />
