@@ -20,7 +20,7 @@
             <param name="inputNode" value="imageReader1" />
             <param name="i" value="p58-t0_imgFus_down_interp_2x.inr.gz" />
             <param name="outputNode" value="cellImageWriter1" />
-            <output name="out" file="p58-t0_imgFus_down_interp_2x_o.inr.gz" compare="same_size"/>
+            <output name="out" file="p58-t0_imgFus_down_interp_2x_o.inr.gz" value="p58-t0_imgFus_down_interp_temp.inr.gz" compare="same_size"/>
         </test>
     </tests>
     <help><![CDATA[
