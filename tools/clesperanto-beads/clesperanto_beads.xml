@@ -1,6 +1,6 @@
 <tool id="clesperanto_beads" name="Clesperanto Beads Seg and Measure" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl pandas python</package>
+        <package type="conda" env="clesperanto">-c conda-forge pyopencl pyclesperanto-prototype pandas python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__clesperanto_beads.py' --infile ${i} --sigma ${sigma} --scalar ${scalar} --out ${out}

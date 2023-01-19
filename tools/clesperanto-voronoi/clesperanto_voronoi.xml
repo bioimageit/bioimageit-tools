@@ -1,6 +1,6 @@
 <tool id="clesperanto_voronoi" name="Clesperanto Voronoi" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
+        <package type="conda" env="clesperanto">-c conda-forge pyopencl pyclesperanto-prototype python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__clesperanto_voronoi.py' --infile ${i} --sigma_spot_detection ${sigma_spot_detection} --sigma_outline ${sigma_outline} --out ${out}
