@@ -1,6 +1,6 @@
 <tool id="clesperanto_basic_stats" name="Clesperanto Basic Stats" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python pandas</package>
+        <package type="conda" env="clesperanto">-c conda-forge pyopencl pyclesperanto-prototype python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__clesperanto_basic_stats.py' --infile ${i} --spot_sigma ${spot_sigma} --out ${out}
