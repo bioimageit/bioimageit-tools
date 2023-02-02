@@ -1,0 +1,35 @@
+<tool id="cellpose_retrain" name="Cellpose 2.0 use custom model" version="2.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="cellpose_2">opencv opencv-python-headless cellpose python=3.8 pytorch==1.12.0 cudatoolkit=11.3 -c pytorch -c fastai -c conda-forge</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__cellpose_notebook_custom.py' --infile ${i} --chan ${chan} --chan2 ${chan2} --model_path ${model_path} --diameter ${diameter} --flow_threshold ${flow_threshold} --cellprob_threshold ${cellprob_threshold} --out ${out}
+    ]]></command>
+    <inputs>  
+        <param type="data" name="i" format="imagetiff" label="Input Image" help="image" /> 
+        <param argument="--model_path" type="string" label="Custom model path" help="Type the path of your custom model"/>
+        <param argument="--chan" type="select" label="Channel to use for training" help="Channel to use for training">
+            <option value="0">Grayscale</option>
+            <option value="3">Blue</option>
+            <option value="2">Green</option>
+            <option value="1">Red</option> 
+        </param> 
+        <param argument="--chan2" type="select" label="Second training channel" help="If you have a secondary channel that can be used, for instance nuclei, choose it here">
+            <option value="3">Blue</option>
+            <option value="2">Green</option>
+            <option value="1">Red</option>
+            <option value="0">None</option>
+        </param> 
+        <param type="float" name="diameter" value="0" label="Diameter" help="Diameter of cells (set to zero to use diameter from training set)" />
+        <param type="float" name="flow_threshold" value="0.4" label="Flow threshold" help="threshold on flow error to accept a mask (set higher to get more cells, e.g. in range from (0.1, 3.0), OR set to 0.0 to turn off so no cells discarded)" />
+        <param type="float" name="cellprob_threshold" value="0.4" label="Cellprob threshold" help="threshold on cellprob output to seed cell masks (set lower to include more pixels or higher to include fewer, e.g. in range from (-6, 6))" />
+    </inputs>
+    <outputs>
+        <data name="out" format="imagetiff" label="Output image" />
+    </outputs>>
+    <help><![CDATA[
+        https://www.nature.com/articles/s41592-022-01663-4
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
