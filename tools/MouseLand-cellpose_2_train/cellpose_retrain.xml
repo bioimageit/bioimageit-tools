@@ -1,4 +1,4 @@
-<tool id="cellpose_retrain" name="Cellpose 2.0 train (file mode only)" version="2.0.0" python_template_version="3.5">
+<tool id="cellpose_2_train" name="Cellpose train (file mode only)" version="2.0.0" python_template_version="3.5">
     <requirements>
         <package type="conda" env="cellpose_2">opencv opencv-python-headless cellpose python=3.8 pytorch==1.12.0 cudatoolkit=11.3 -c pytorch -c fastai -c conda-forge</package>
     </requirements>
@@ -41,7 +41,7 @@
         </param> 
         <param argument="--learning_rate" type="string" label="Learning rate" help="Learning rate" value="0.1" optional="true"/>
         <param argument="--weight_decay" type="string" label="Weight decay" help="Weight decay" value="0.0001" optional="true"/>
-        <param argument="--evaluate" type="select" label="Evaluate on test data ?" help="Evaluate on test data (optional). If you have test data, check performance">
+        <param argument="--evaluate" type="select" label="Evaluate on test data ?" help="Evaluate on test data (optional). If you have test data, check performance" optional="true">
             <option value="No">No</option>
             <option value="Yes">Yes</option>
         </param> 
