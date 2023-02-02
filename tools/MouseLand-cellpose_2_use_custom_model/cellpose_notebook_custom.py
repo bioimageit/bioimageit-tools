@@ -112,6 +112,10 @@ output_args.add_argument('--out',
 
 args = parser.parse_args()
 
+input_file_path = args.infile.name
+input_dirname = os.path.dirname(input_file_path)
+input_file_name = input_file_path.replace(input_dirname, "")
+input_file_name = input_file_name[1:len(input_file_name)]
 
 model_path = args.model_path
 input_file_path = args.infile.name
@@ -125,6 +129,7 @@ chan = args.chan
 chan2 = args.chan2
 
 
+print("Input file name : {}".format(input_file_name))
 print("Custom model : {}".format(model_path))
 print("Diameter : {}".format(diameter))
 print("GPU usage : {}".format(use_GPU))
@@ -134,23 +139,19 @@ print("Flow threshold : {}".format(flow_threshold))
 print("Cellprob threshold : {}".format(cellprob_threshold))
 print("Input file path : {}".format(input_file_path))
 print("Input dirname : {}".format(input_dirname))
-print("Input file name : {}".format(input_file_name))
 print("Output file : {}".format(args.out))
 
 
 
 ## Copy/paste -i to cellpose_temp directory
-original_i = input_file_path
-target_i = os.path.join(cellpose_temp, input_file_name)
+# original_i = input_file_path
+# target_i = os.path.join(cellpose_temp, input_file_name)
 
-shutil.copyfile(original_i, target_i)
+# shutil.copyfile(original_i, target_i)
 
-## REPLACE FILES WITH YOUR IMAGE PATHS
-# files = [input_file_path]
-# images = [io.imread(f) for f in files]
-images = io.imread(input_file_path)
+# ## REPLACE FILES WITH YOUR IMAGE PATHS
+# images = io.imread(input_file_path)
 
-channels = [chan]
 
 print("Done")
 print("\n")
@@ -160,12 +161,13 @@ print("\n")
 
 
 print("########## RUN CUSTOM MODEL ##########")
-os.chdir(workspace)
-
 # gets image files in dir (ignoring image files ending in _masks)
-files = io.get_image_files(cellpose_temp, '_masks')
-print(files)
-images = [io.imread(f) for f in files]
+# files = io.get_image_files(cellpose_temp, '_masks')
+# print(files)
+# images = [io.imread(f) for f in files]
+images = io.imread(input_file_path)
+
+
 
 # declare model
 model = models.CellposeModel(gpu=True, 
@@ -192,7 +194,7 @@ print("########## SAVE OUTPUT MASKS TO TIFFS ##########")
 io.save_masks(images, 
               masks, 
               flows, 
-              files, 
+              args.out, 
               channels=[chan, chan2],
               png=False, # save masks as PNGs and save example image
               tif=True, # save masks as TIFFs
@@ -200,6 +202,21 @@ io.save_masks(images,
               save_flows=False, # save flows as TIFFs
               save_outlines=False, # save outlines as TIFFs 
               )
+
+
+
+
+## Copy/paste -o to workspace directory
+original_i = os.path.join(cellpose_temp, input_file_name.replace("_cp_masks.tif", ".tif"))
+target_i = args.out
+
+
+out_img_1 = args.out.replace(".tif", "_cp_masks.tif")
+
+os.rename(out_img_1, args.out)
+
+os.chdir(workspace)
+shutil.rmtree("cellpose_temp")
 
 
 print("Done")

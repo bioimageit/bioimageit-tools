@@ -1,6 +1,6 @@
 <tool id="clesperanto_3D_seg" name="Clesperanto 3D Segmentation" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="clesperanto">-c conda-forge pyopencl pyclesperanto-prototype python</package>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__clesperanto_3D_seg.py' --infile ${i} --sigma_spot_detection ${sigma_spot_detection} --sigma_outline ${sigma_outline} --voxel_size_x ${voxel_size_x} --voxel_size_y ${voxel_size_y} --voxel_size_z ${voxel_size_z} --radius_x ${radius_x} --radius_y ${radius_y} --radius_z ${radius_z} --out ${out}

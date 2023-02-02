@@ -1,6 +1,6 @@
 <tool id="clesperanto_nuclei" name="Clesperanto Count with Channels" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="clesperanto">-c conda-forge pyopencl pyclesperanto-prototype python</package>
+        <package type="conda" env="clesperanto" init="pip install pyclesperanto-prototype">-c conda-forge pyopencl python</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__clesperanto_count.py' --infile ${i} --spot_sigma ${spot_sigma} --out ${out}

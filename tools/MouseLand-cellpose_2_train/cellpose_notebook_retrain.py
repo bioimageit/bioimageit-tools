@@ -217,7 +217,7 @@ new_model_path = model.train(train_data, train_labels,
                               test_data=test_data,
                               test_labels=test_labels,
                               channels=channels, 
-                              save_path=cellpose_temp, 
+                              save_path=workspace, 
                               n_epochs=n_epochs,
                               learning_rate=learning_rate, 
                               weight_decay=weight_decay, 
@@ -248,6 +248,8 @@ if args.evaluate == 'Yes' :
     ap = metrics.average_precision(test_labels, masks)[0]
     print('')
     print(f'>>> average precision at iou threshold 0.5 = {ap[:,0].mean():.3f}')
+
+
 
 print("Done")
 print("\n")
