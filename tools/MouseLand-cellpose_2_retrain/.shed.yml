@@ -1,0 +1,6 @@
+categories: [Segmentation]
+description: Cellpose Retrain models
+homepage_url: https://www.nature.com/articles/s41592-022-01663-4
+long_description: Anatomical segmentation algorithm written in Python 
+name: Cellpose 2.0 Retrain
+owner: Stringer Lab

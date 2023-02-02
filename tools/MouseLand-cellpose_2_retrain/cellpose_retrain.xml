@@ -1,0 +1,56 @@
+<tool id="cellpose_retrain" name="Cellpose 2.0 Retrain" version="1.0.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="cellpose_2">opencv opencv-python-headless cellpose python=3.8 pytorch==1.12.0 cudatoolkit=11.3 -c pytorch -c fastai -c conda-forge</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__cellpose_notebook_retrain.py' --train_dir ${train_dir} --test_dir ${test_dir} --initial_model ${initial_model} --n_epochs ${n_epochs} --chan ${chan} --chan2 ${chan2} --learning_rate ${learning_rate} --weight_decay ${weight_decay} --evaluate ${evaluate} --model_name ${model_name}
+    ]]></command>
+    <inputs>   
+        <param argument="--model_name" type="string" label="New model name" help="Choose a name for your new model"/>
+        <param argument="--train_dir" type="string" label="Train directory" help="Full path of your train directory"/>
+        <param argument="--test_dir" type="string" label="Test directory" help="Full path of your test directory"/>
+        <param argument="--initial_model" type="select" label="Initial model" help="Initial model to retrain">
+            <option value="cyto">Cyto</option>
+            <option value="cyto2">Cyto2</option>
+            <option value="nuclei">Nuclei</option>
+            <option value="tissuenet">Tissuenet</option>
+            <option value="livecell">Livecell</option>
+            <option value="CP">CP</option>
+            <option value="CPx">CPx</option>
+            <option value="TN1">TN1</option>
+            <option value="TN2">TN2</option>
+            <option value="TN3">TN3</option>
+            <option value="LC1">LC1</option>
+            <option value="LC2">LC2</option>
+            <option value="LC3">LC3</option>
+            <option value="LC4">LC4</option>
+            <option value="scratch">scratch</option>
+        </param>
+        <param argument="--n_epochs" type="string" label="Number of epochs" help="Number of epochs" value="100"/>
+        <param argument="--chan" type="select" label="Channel to use for training" help="Channel to use for training">
+            <option value="0">Grayscale</option>
+            <option value="3">Blue</option>
+            <option value="2">Green</option>
+            <option value="1">Red</option> 
+        </param> 
+        <param argument="--chan2" type="select" label="Second training channel" help="Second training channel">
+            <option value="3">Blue</option>
+            <option value="2">Green</option>
+            <option value="1">Red</option>
+            <option value="0">None</option>
+        </param> 
+        <param argument="--learning_rate" type="string" label="Learning rate" help="Learning rate" value="0.1" optional="true"/>
+        <param argument="--weight_decay" type="string" label="Weight decay" help="Weight decay" value="0.0001" optional="true"/>
+        <param argument="--evaluate" type="select" label="Evaluate on test data ?" help="Evaluate on test data (optional). If you have test data, check performance">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </param> 
+    </inputs>
+    <outputs>
+    </outputs>>
+    <help><![CDATA[
+        https://www.nature.com/articles/s41592-022-01663-4
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
