@@ -1,0 +1,6 @@
+categories: [Denoising, Segmentation]
+description: gnomon pipeline (Only Mac and Linux)
+homepage_url: https://gnomon.gitlabpages.inria.fr/gnomon/
+long_description: Execute a gnomon pipeline in bioImageIt. Only works on Mac and Linux
+name: gnomon
+owner: mosaic

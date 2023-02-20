@@ -1,0 +1,31 @@
+<tool id="gnomon" name="gnomon (only Mac and Linux)" version="0.72.0" python_template_version="3.5">
+    <requirements>
+        <package type="conda" env="gnomon">-c trcabel -c gnomon -c mosaic -c morpheme -c dtk-forge6 -c conda-forge gnomon=0.72.0 python=3.9</package>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        gnomonPipelineRunner ${pipeline} --ios ${inputNode},${i} --ios ${outputNode},${out}
+    ]]></command>
+    <inputs>
+      <param type="data" name="i" label="Input Image" format="raw" help="image" />
+      <param argument="-pipeline" type="string" value="???.json" label="pipeline file" help="path to the json pipeline file to run"  />
+      <param argument="-inputNode" type="string" value="imageReader1" label="firstReader" help="first reader name passed to ios" />
+      <param argument="-outputNode" type="string" value="cellImageWriter1" label="firstWriter" help="first writer name passed to ios" />
+    </inputs>
+    <outputs>
+      <data name="out" label="Output" format="raw" />
+    </outputs>
+    <tests>
+      <test>
+        <param name="pipeline" value="segmentation_pipeline.json" />
+        <param name="inputNode" value="imageReader1" />
+        <param name="i" value="p58-t0_imgFus_down_interp_2x.inr.gz" />
+        <param name="outputNode" value="cellImageWriter1" />
+        <output name="out" file="p58-t0_imgFus_down_interp_2x_o.inr.gz" value="p58-t0_imgFus_down_interp_temp.inr.gz" compare="same_size"/>
+      </test>
+    </tests>
+    <help><![CDATA[
+        https://gnomon.gitlabpages.inria.fr/gnomon/
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
