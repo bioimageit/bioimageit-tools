@@ -104,8 +104,10 @@ function is_file_in_filter(filename, filter)
 function import_image(original_file_path, destination_dir, data_name, author, date, tags)
 {
 	// open the image with BioFormat 
-	open(original_file_path);
-	//run("Bio-Formats Importer", "open=["+original_file_path+"] color_mode=Default display_metadata rois_import=[ROI manager] view=Hyperstack stack_order=XYCZT use_virtual_stack");
+	// Do not use `open(…)` built-in function as it would try to open import pop-up in headless mode, and fail. 
+	run("Bio-Formats Macro Extensions");
+	Ext.openImagePlus(original_file_path);
+
 	rename("input_image");
 	metadata_json = get_metadata_to_json();
 
