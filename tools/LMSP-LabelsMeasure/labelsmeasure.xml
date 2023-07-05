@@ -1,6 +1,6 @@
 <tool id="labelsmeasure" name="LabelsMeasure" version="1.0.0" python_template_version="3.5">
     <requirements>
-        <package type="conda" env="LabelsMeasure">python scikit-image</package>
+        <package type="conda" env="LabelsMeasure">python pandas scikit-image</package>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python '$__tool_directory__LabelsMeasure.py' --original ${original} --label ${label} --binary_map ${binary_map} --pixel ${pixel} --out ${out}
